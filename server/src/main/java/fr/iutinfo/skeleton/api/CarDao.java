@@ -12,6 +12,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface CarDao {
 
+	
 	@SqlUpdate("create table Car (Carid integer primary key autoincrement, userid integer, marque varchar(20), modele varchar(20), couleur varchar(20), commentaire text, foreign key(userid) references users(userid))")
     void createCarTable();
 

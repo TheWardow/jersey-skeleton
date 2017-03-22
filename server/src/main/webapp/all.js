@@ -1,6 +1,3 @@
-var login;
-var password;
-
 function getUserBdd(name) {
 	getUserGeneric(name, "v1/user/");
 }
@@ -19,44 +16,32 @@ function getByAnnotation() {
 	getSecure("v1/secure/byannotation");
 }
 
-function getSecure(url) {
-	if($("#userlogin").val() != "") {
-		$.ajax
-		({
-			type: "GET",
-			url: url,
-			dataType: 'json',
-			beforeSend : function(req) {
-				req.setRequestHeader("Authorization", "Basic " + btoa($("#userlogin").val() + ":" + $("#passwdlogin").val()));
-			},
-			success: function (data) {
-				console.log(data);
-				if(data.id != -1){
-					console.log("OK");
-					$("#login").hide();
-					$("#admin").show();
-				}else{
-					$("#error").show();
-				}
-			},
-			error : function(jqXHR, textStatus, errorThrown) {
-				alert('error: ' + textStatus);
-			}
-		});
-	} else {
-		$.getJSON(url, function(data) {
-			afficheUser(data);
-		});
-	}
-}
-
-function simulate(){
-	$("#login").hide();
-	$("#admin").show();
-}
+ function getSecure(url) {
+ if($("#userlogin").val() != "") {
+     $.ajax
+     ({
+       type: "GET",
+       url: url,
+       dataType: 'json',
+       beforeSend : function(req) {
+        req.setRequestHeader("Authorization", "Basic " + btoa($("#userlogin").val() + ":" + $("#passwdlogin").val()));
+       },
+       success: function (data) {
+        afficheUser(data);
+       },
+       error : function(jqXHR, textStatus, errorThrown) {
+       			alert('error: ' + textStatus);
+       		}
+     });
+     } else {
+     $.getJSON(url, function(data) {
+     	    afficheUser(data);
+        });
+     }
+ }
 
 function postUserBdd(name, alias, email, pwd) {
-	postUserGeneric(name, alias, email, pwd, "v1/user/");
+    postUserGeneric(name, alias, email, pwd, "v1/user/");
 }
 
 function postUserGeneric(name, alias, email, pwd, url) {
@@ -83,7 +68,7 @@ function postUserGeneric(name, alias, email, pwd, url) {
 }
 
 function listUsersBdd() {
-	listUsersGeneric("v1/user/");
+    listUsersGeneric("v1/user/");
 }
 
 function listUsersGeneric(url) {
@@ -105,24 +90,4 @@ function afficheListUsers(data) {
 	}
 	html = html + "</ul>";
 	$("#reponse").html(html);
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-} 
-
-function disconnect(){
-	document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
 }

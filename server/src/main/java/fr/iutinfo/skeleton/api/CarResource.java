@@ -28,6 +28,7 @@ import fr.iutinfo.skeleton.common.dto.CarDto;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CarResource {
+	
 
 	final static Logger logger = LoggerFactory.getLogger(UserResource.class);
     private static CarDao dao = getDbi().open(CarDao.class);

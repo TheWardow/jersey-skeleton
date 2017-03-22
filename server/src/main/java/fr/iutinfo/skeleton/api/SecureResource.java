@@ -14,6 +14,7 @@ import javax.ws.rs.core.SecurityContext;
 public class SecureResource {
     final static Logger logger = LoggerFactory.getLogger(SecureResource.class);
 
+    
     @GET
     @Path("/who")
     public User secureWhoAmI(@Context SecurityContext context) {

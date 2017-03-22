@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class CarDto {
 
+	
 	final static Logger logger = LoggerFactory.getLogger(CarDto.class);
     private String marque;
     private String modele;

@@ -19,6 +19,7 @@ import static fr.iutinfo.skeleton.api.BDDFactory.tableExist;
 public class UserResource {
     final static Logger logger = LoggerFactory.getLogger(UserResource.class);
     private static UserDao dao = getDbi().open(UserDao.class);
+    
 
     public UserResource() throws SQLException {
         if (!tableExist("users")) {

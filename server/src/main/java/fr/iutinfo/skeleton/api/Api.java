@@ -9,6 +9,7 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("/v1/")
 public class Api extends ResourceConfig {
 
+	
     public Api() {
         packages("fr.iutinfo.skeleton.api");
         //register(LoggingFilter.class);

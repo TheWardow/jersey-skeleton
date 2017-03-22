@@ -21,6 +21,7 @@ public class User implements Principal {
     private String passwdHash;
     private String salt;
     private String search;
+    
 
     public User(int id, String name) {
         this.id = id;

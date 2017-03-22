@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import fr.iutinfo.skeleton.common.dto.CarDto;
 
 public class Car {
+	
 	final static Logger logger = LoggerFactory.getLogger(Car.class);
     private int userId;
     private String marque;

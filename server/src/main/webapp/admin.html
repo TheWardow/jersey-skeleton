@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Jersey Skeleton</title>
+<meta charset='utf-8'>
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<!-- bootstrap -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<!-- Code local -->
+<script src="all.js"></script>
+<script>
+	if(getCookie("user") == ""){
+				window.location.replace("login.html");
+	}
+</script>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<ul class="nav navbar-nav">
+            <li class="active"><a href="admin.html">Administration</a></li>
+            <li id="deconnexion"><a  href="login.html">Déconnexion</a></li>
+        </ul>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h1>Administration</h1>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		
+		$(document).ready(
+			function() {
+				$("#deconnexion").click(function() {disconnect()});
+			});
+	</script>
+</body>
+</html>

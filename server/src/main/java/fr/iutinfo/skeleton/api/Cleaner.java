@@ -11,23 +11,25 @@ import com.google.common.base.Charsets;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 
+import fr.iutinfo.skeleton.common.dto.CleanerDto;
 import fr.iutinfo.skeleton.common.dto.UserDto;
 
 public class Cleaner implements Principal {
     final static Logger logger = LoggerFactory.getLogger(Cleaner.class);
     private static Cleaner anonymous = new Cleaner(-1, "Anonymous");
-    private String tel;
-    private Date dob;
+    private int id = 0;
     private String nom;
     private String prenom;
-    private int isadmin;
-    private int id = 0;
+    private String tel;
+    private Date dob;
     private String email;
     private String login;
     private String password;
     private String passwdHash;
     private String salt;
     private String search;
+    private String localisation;
+    private Double note;
     
 
     public Cleaner(int id, String login) {
@@ -46,6 +48,22 @@ public class Cleaner implements Principal {
 
 	public static void setAnonymous(Cleaner anonymous) {
 		Cleaner.anonymous = anonymous;
+	}
+
+	public String getLocalisation() {
+		return localisation;
+	}
+
+	public Double getNote() {
+		return note;
+	}
+
+	public void setLocalisation(String localisation) {
+		this.localisation = localisation;
+	}
+
+	public void setNote(Double note) {
+		this.note = note;
 	}
 
 	public String getLogin() {
@@ -86,14 +104,6 @@ public class Cleaner implements Principal {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public int getIsadmin() {
-		return isadmin;
-	}
-
-	public void setIsadmin(int isAdmin) {
-		this.isadmin = isAdmin;
 	}
 
 	public static Cleaner getAnonymousUser() {
@@ -157,6 +167,7 @@ public class Cleaner implements Principal {
         Cleaner user = (Cleaner) arg;
         return login.equals(user.login) && email.equals(user.email) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
     }
+    
 
     @Override
     public String toString() {
@@ -206,16 +217,28 @@ public class Cleaner implements Principal {
         this.search = search;
     }
 
-    public void initFromDto(UserDto dto) {
+    public void initFromDto(CleanerDto dto) {
         this.setEmail(dto.getEmail());
         this.setId(dto.getId());
         this.setLogin(dto.getLogin());
         this.setPassword(dto.getPassword());
+        this.setDob(dto.getDob());
+        this.setLocalisation(dto.getLocalisation());
+        this.setNom(dto.getNom());
+        this.setNote(dto.getNote());
+        this.setPrenom(dto.getPrenom());
+        this.setTel(dto.getTel());
         this.salt = getSalt();
     }
 
-    public UserDto convertToDto() {
-        UserDto dto = new UserDto();
+    public CleanerDto convertToDto() {
+        CleanerDto dto = new CleanerDto();
+        dto.setNom(getNom());
+        dto.setPrenom(getPrenom());
+        dto.setTel(getTel());
+        dto.setDob(getDob());
+        dto.setLocalisation(getLocalisation());
+        dto.setNote(getNote());
         dto.setEmail(this.getEmail());
         dto.setId(this.getId());
         dto.setLogin(this.getLogin());

@@ -39,8 +39,8 @@ public class PictureResource {
     }
 
     @GET
-    @Path("/{picture}")
-    public PictureDto getPicture(@PathParam("picture") int id) {
+    @Path("/{id}")
+    public PictureDto getPicture(@PathParam("id") int id) {
         Picture picture = dao.findById(id);
         if (picture == null) {
             throw new WebApplicationException(404);

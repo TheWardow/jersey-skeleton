@@ -32,10 +32,12 @@ public interface UserDao {
     @SqlQuery("select * from users order by login")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<User> all();
-
-    @SqlQuery("select * from users where login = :login")
-    @RegisterMapperFactory(BeanMapperFactory.class)
-    User findById(@Bind("login") int login);
-
+    
+    @SqlUpdate("update user set email = :email")
+    void updateEmail(@Bind("email") String email);
+    
+    @SqlUpdate("update user set tel = :tel")
+    void updateTel(@Bind("tel") String tel);
+    
     void close();
 }

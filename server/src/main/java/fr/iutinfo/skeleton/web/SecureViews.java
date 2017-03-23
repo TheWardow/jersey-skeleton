@@ -36,7 +36,7 @@ public class SecureViews {
     @Path("/login")
     public User login(@Context SecurityContext context, @QueryParam("user") String oldLogin, @Context UriInfo uriInfo) throws URISyntaxException {
         User currentUser = (User) context.getUserPrincipal();
-        User oldUser = dao.findByName(oldLogin);
+        User oldUser = dao.findByLogin(oldLogin);
         if (oldUser == null) {
             oldUser = User.getAnonymousUser();
         }

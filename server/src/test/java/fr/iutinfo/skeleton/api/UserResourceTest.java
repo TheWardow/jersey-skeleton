@@ -31,40 +31,12 @@ public class UserResourceTest extends JerseyTest {
 
     @Test
     public void read_should_return_a_user_as_object() {
-        createUserWithName("foo");
+        createUserWithLogin("foo");
         UserDto utilisateur = target(PATH + "/foo").request().get(UserDto.class);
         assertEquals("foo", utilisateur.getName());
     }
 
-    @Test
-    public void read_user_should_return_good_alias() {
-        createRms();
-        UserDto user = target(PATH + "/Richard Stallman").request().get(UserDto.class);
-        assertEquals("RMS", user.getAlias());
-    }
-
-    @Test
-    public void read_user_should_return_good_email() {
-        createIan();
-        UserDto user = target(PATH + "/Ian Murdock").request().get(UserDto.class);
-        assertEquals("ian@debian.org", user.getEmail());
-    }
-
-    @Test
-    public void read_user_should_read_user_with_same_salt() {
-        String expectedSalt = "graindesel";
-        createUserWithPassword("Mark Shuttleworth", "motdepasse", expectedSalt);
-        User user = dao.findByName("Mark Shuttleworth");
-        assertEquals(expectedSalt, user.getSalt());
-    }
-
-    @Test
-    public void read_user_should_return_hashed_password() throws NoSuchAlgorithmException {
-        createUserWithPassword("Loïc Dachary", "motdepasse", "grain de sable");
-        User user = dao.findByName("Loïc Dachary");
-        assertEquals("dfeb21109fe5eab1b1db7369844921c44b87b44669b0742f3f73bd166b474779", user.getPasswdHash());
-    }
-
+   
     @Test
     public void create_should_return_the_user_with_valid_id() {
         User user = new User(0, "thomas");
@@ -75,30 +47,30 @@ public class UserResourceTest extends JerseyTest {
 
     @Test
     public void list_should_return_all_users() {
-        createUserWithName("foo");
-        createUserWithName("bar");
+    	createUserWithLogin("foo");
+        createUserWithLogin("bar");
         List<UserDto> users = target(PATH + "/").request().get(listUserResponseType);
         assertEquals(2, users.size());
     }
 
     @Test
     public void list_all_must_be_ordered() {
-        createUserWithName("foo");
-        createUserWithName("bar");
+    	createUserWithLogin("foo");
+        createUserWithLogin("bar");
         List<UserDto> users = target(PATH + "/").request().get(listUserResponseType);
         assertEquals("foo", users.get(0).getName());
     }
 
     @Test
     public void after_delete_read_user_sould_return_204() {
-        User u = createUserWithName("toto");
+        User u = createUserWithLogin("toto");
         int status = target(PATH + "/" + u.getId()).request().delete().getStatus();
         assertEquals(204, status);
     }
 
     @Test
     public void should_delete_user() {
-        User u = createUserWithName("toto");
+        User u = createUserWithLogin("toto");
         target(PATH + "/" + u.getId()).request().delete();
         User user = dao.findById(u.getId());
         Assert.assertEquals(null, user);
@@ -112,30 +84,11 @@ public class UserResourceTest extends JerseyTest {
 
     @Test
     public void list_should_search_in_name_field() {
-        createUserWithName("foo");
-        createUserWithName("bar");
+    	createUserWithLogin("foo");
+    	createUserWithLogin("bar");
 
         List<UserDto> users = target(PATH + "/").queryParam("q", "ba").request().get(listUserResponseType);
         assertEquals("bar", users.get(0).getName());
     }
 
-    @Test
-    public void list_should_search_in_alias_field() {
-        createRms();
-        createLinus();
-        createRob();
-
-        List<UserDto> users = target(PATH + "/").queryParam("q", "RMS").request().get(listUserResponseType);
-        assertEquals("Richard Stallman", users.get(0).getName());
-    }
-
-    @Test
-    public void list_should_search_in_email_field() {
-        createRms();
-        createLinus();
-        createRob();
-
-        List<UserDto> users = target(PATH + "/").queryParam("q", "fsf").request().get(listUserResponseType);
-        assertEquals(2, users.size());
-    }
 }

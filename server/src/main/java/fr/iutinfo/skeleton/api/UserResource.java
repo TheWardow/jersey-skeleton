@@ -25,7 +25,6 @@ public class UserResource {
         if (!tableExist("users")) {
             logger.debug("Crate table users");
             dao.createUserTable();
-            dao.insert(new User(0, "Margaret Thatcher", "la Dame de fer"));
         }
     }
 
@@ -41,8 +40,8 @@ public class UserResource {
 
     @GET
     @Path("/{name}")
-    public UserDto getUser(@PathParam("name") String name) {
-        User user = dao.findByName(name);
+    public UserDto getUser(@PathParam("name") String login) {
+        User user = dao.findByLogin(login);
         if (user == null) {
             throw new WebApplicationException(404);
         }

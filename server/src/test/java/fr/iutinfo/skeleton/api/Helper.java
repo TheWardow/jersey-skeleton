@@ -1,11 +1,14 @@
 package fr.iutinfo.skeleton.api;
 
-import fr.iutinfo.skeleton.common.dto.UserDto;
+import java.util.Date;
+import java.util.List;
+
+import javax.ws.rs.core.GenericType;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.core.GenericType;
-import java.util.List;
+import fr.iutinfo.skeleton.common.dto.UserDto;
 
 public class Helper {
     private final static Logger logger = LoggerFactory.getLogger(Helper.class);
@@ -18,13 +21,8 @@ public class Helper {
         dao.createUserTable();
     }
 
-    static User createUserWithName(String name) {
-        User user = new User(0, name);
-        return createUser(user);
-    }
-
-    static User createUserWithAlias(String name, String alias) {
-        User user = new User(0, name, alias);
+    static User createUserWithLogin(String login) {
+        User user = new User(0, login);
         return createUser(user);
     }
 
@@ -34,8 +32,8 @@ public class Helper {
         return createUser(user);
     }
 
-    public static User createUserWithPassword(String name, String passwd, String salt) {
-        User user = new User(0, name);
+    public static User createUserWithPassword(String login, String passwd, String salt) {
+        User user = new User(0, login);
         user.setSalt(salt);
         user.setPassword(passwd);
         logger.debug("createUserWithPassword Hash : " + user.getPasswdHash());
@@ -49,29 +47,18 @@ public class Helper {
     }
 
 
-    private static User createFullUSer(String name, String alias, String email, String paswword) {
-        User user = new User(0, name);
-        user.setAlias(alias);
+    private static User createFullUSer(String login, String password, String nom, String prenom, boolean isAdmin, String tel, Date dob, String email) {
+        User user = new User(0, login);
         user.setEmail(email);
-        user.setPassword(paswword);
+        user.setPassword(password);
+        user.setNom(nom);
+        user.setPrenom(prenom);
+        user.setAdmin(isAdmin);
+        user.setTel(tel);
+        user.setDob(dob);
         int id = dao.insert(user);
         user.setId(id);
         return user;
     }
-
-    static void createRms() {
-        createFullUSer("Richard Stallman", "RMS", "rms@fsf.org", "gnuPaswword");
-    }
-
-    static User createRob() {
-        return createFullUSer("Robert Capillo", "rob", "rob@fsf.org", "paswword");
-    }
-
-    static User createLinus() {
-        return createFullUSer("Linus Torvalds", "linus", "linus@linux.org", "paswword");
-    }
-
-    static User createIan() {
-        return createFullUSer("Ian Murdock", "debian", "ian@debian.org", "mot de passe");
-    }
 }
+

@@ -30,7 +30,7 @@ public class UsersProviderIntegrationTest extends JerseyTest {
         createUser("Thomas");
 
         UserDto user = usersProvider.readUser("Thomas");
-        Assert.assertEquals("Thomas", user.getName());
+        Assert.assertEquals("Thomas", user.getLogin());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class UsersProviderIntegrationTest extends JerseyTest {
     public void should_add_remote_user() {
         initDatabase();
         UserDto olivier = new UserDto();
-        olivier.setName("Olivier");
+        olivier.setLogin("Olivier");
 
         UserDto remoteUser = usersProvider.addUser(olivier);
         User bddUser = userDao.findById(remoteUser.getId());
@@ -56,9 +56,9 @@ public class UsersProviderIntegrationTest extends JerseyTest {
     }
 
 
-    private void createUser(String name) {
+    private void createUser(String login) {
         User thomas = new User();
-        thomas.setName(name);
+        thomas.setLogin(login);
         userDao.insert(thomas);
     }
 

@@ -1,20 +1,27 @@
 package fr.iutinfo.skeleton.api;
 
-import com.google.common.base.Charsets;
-import com.google.common.hash.Hasher;
-import com.google.common.hash.Hashing;
-import fr.iutinfo.skeleton.common.dto.UserDto;
+import java.security.Principal;
+import java.security.SecureRandom;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.security.Principal;
-import java.security.SecureRandom;
+import com.google.common.base.Charsets;
+import com.google.common.hash.Hasher;
+import com.google.common.hash.Hashing;
+
+import fr.iutinfo.skeleton.common.dto.UserDto;
 
 public class User implements Principal {
     final static Logger logger = LoggerFactory.getLogger(User.class);
-    private static User anonymous = new User(-1, "Anonymous", "anonym");
-    private String name;
-    private String alias;
+    private static User anonymous = new User(-1, "Anonymous");
+    private String login;
+    private String tel;
+    private Date dob;
+    private String nom;
+    private String prenom;
+    private boolean isAdmin;
     private int id = 0;
     private String email;
     private String password;
@@ -23,21 +30,73 @@ public class User implements Principal {
     private String search;
     
 
-    public User(int id, String name) {
+    public User(int id, String login) {
         this.id = id;
-        this.name = name;
-    }
-
-    public User(int id, String name, String alias) {
-        this.id = id;
-        this.name = name;
-        this.alias = alias;
+        this.login = login;
     }
 
     public User() {
     }
 
-    public static User getAnonymousUser() {
+    
+    
+    public static User getAnonymous() {
+		return anonymous;
+	}
+
+	public static void setAnonymous(User anonymous) {
+		User.anonymous = anonymous;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public static User getAnonymousUser() {
         return anonymous;
     }
 
@@ -57,13 +116,6 @@ public class User implements Principal {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getPassword() {
         return this.password;
@@ -101,21 +153,14 @@ public class User implements Principal {
         if (getClass() != arg.getClass())
             return false;
         User user = (User) arg;
-        return name.equals(user.name) && alias.equals(user.alias) && email.equals(user.email) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
+        return login.equals(user.login) && email.equals(user.email) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
     }
 
     @Override
     public String toString() {
-        return id + ": " + alias + ", " + name + " <" + email + ">";
+        return id + ": " + login + " <" + email + ">";
     }
 
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
 
     public String getSalt() {
         if (salt == null) {
@@ -150,7 +195,7 @@ public class User implements Principal {
     }
 
     public String getSearch() {
-        search = name + " " + alias + " " + email;
+        search = login + " " + email;
         return search;
     }
 
@@ -159,20 +204,24 @@ public class User implements Principal {
     }
 
     public void initFromDto(UserDto dto) {
-        this.setAlias(dto.getAlias());
         this.setEmail(dto.getEmail());
         this.setId(dto.getId());
-        this.setName(dto.getName());
+        this.setLogin(dto.getLogin());
         this.setPassword(dto.getPassword());
     }
 
     public UserDto convertToDto() {
         UserDto dto = new UserDto();
-        dto.setAlias(this.getAlias());
         dto.setEmail(this.getEmail());
         dto.setId(this.getId());
-        dto.setName(this.getName());
+        dto.setLogin(this.getLogin());
         dto.setPassword(this.getPassword());
         return dto;
     }
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return this.nom;
+	}
 }

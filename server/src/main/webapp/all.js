@@ -61,7 +61,7 @@ function postUserBdd(login, pwd) {
 }
 
 function postUserGeneric(login, pwd, url) {
-	console.log("postUserGeneric " + url + login + pwd)
+	console.log("postUserGeneric " + url )
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
@@ -74,6 +74,34 @@ function postUserGeneric(login, pwd, url) {
 			"email" : "sfg@fzsegfzs.szefg",
 			"tel" : "05215954",
 			"isAdmin" : 0,
+			"login" : login,
+			"password" : pwd,
+			"id" : 0
+		}),
+		success : function(data, textStatus, jqXHR) {
+			console.log("OK !");
+			afficheUser(data);
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log('postUser error: ' + textStatus);
+		}
+	});
+}
+
+function postAdminBdd(login, pwd) {
+	console.log("postAdminBdd " + "v1/user/" )
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/user/",
+		dataType : "json",
+		data : JSON.stringify({
+			"nom" : "admin",
+			"prenom" : "admin",
+			"dob" : new Date(),
+			"email" : "admin@admin.com",
+			"tel" : "",
+			"isAdmin" : 1,
 			"login" : login,
 			"password" : pwd,
 			"id" : 0

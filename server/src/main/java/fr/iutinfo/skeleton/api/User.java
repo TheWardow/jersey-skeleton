@@ -211,6 +211,7 @@ public class User implements Principal {
         this.setId(dto.getId());
         this.setLogin(dto.getLogin());
         this.setPassword(dto.getPassword());
+        this.setIsadmin(dto.getIsAdmin());
         this.salt = getSalt();
     }
 

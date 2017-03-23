@@ -24,8 +24,11 @@
 		<div class="container">
 			<div class="row" style="margin-top: 1em;">
 				<div class="col-md-12">
-					<div class="alert alert-danger alert-dismissable fade in" id="error">
-						<h5><strong>Erreur !</strong> Identifiants invalides</h5>
+					<div class="alert alert-danger alert-dismissable fade in"
+						id="error">
+						<h5>
+							<strong>Erreur !</strong> Identifiants invalides
+						</h5>
 					</div>
 				</div>
 			</div>
@@ -42,8 +45,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<input type="text" name="userlogin" id="userlogin"
-						placeholder="Login" class="form-control" /> 
-						<input
+						placeholder="Login" class="form-control" /> <input
 						type="password" name="user" id="passwdlogin"
 						placeholder="Password" class="form-control" /> <br />
 					<button id="connexion" class="btn btn-default">Connexion</button>
@@ -60,7 +62,7 @@
 		</div>
 	</div>
 
-	<div id="application">
+	<div id="application" style="display: none">
 		<nav class="navbar navbar-default">
 			<ul class="nav navbar-nav">
 				<li id="Connexion"><a href="/">Connexion</a></li>
@@ -85,8 +87,25 @@
 		<nav class="navbar navbar-default">
 			<ul class="nav navbar-nav">
 				<li id="deconnexion"><a href="/">Déconnexion</a></li>
+				<li id="new-admin"><a>Ajouter un Admin</a></li>
+				<li id="new-cleaner"><a>Ajouter un Netoyeur</a></li>
 			</ul>
 		</nav>
+
+		<div id="new-admin-form" style="display: none">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<input type="text" name="adminlogin" id="adminlogin"
+							placeholder="Login" class="form-control" /> <input
+							type="password" name="user" id="adminpasswd"
+							placeholder="Password" class="form-control" /> <br />
+						<button id="new-admin-form-btn" class="btn btn-default">Create Admin</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 		<div class="container" style="width: 100%;">
 			<div class="row">
@@ -173,6 +192,10 @@
 			$("#new-user").click(function() {
 				postUserBdd($("#userlogin").val(), $("#passwdlogin").val());
 			});
+			
+			$("#new-admin-form-btn").click(function() {
+				postAdminBdd($("#adminlogin").val(), $("#adminpasswd").val());
+			});
 
 			$("#simul").click(function() {
 				$("#login").hide();
@@ -183,6 +206,13 @@
 				$("#login").hide();
 				$("#application").show();
 			});
+
+			$("#new-admin").click(function() {
+				$("#new-admin-form").show();
+			});
+			
+			
+			
 
 			$("#error").hide();
 			$("#application").hide();

@@ -18,6 +18,7 @@ public class SecureResource {
     @GET
     @Path("/who")
     public User secureWhoAmI(@Context SecurityContext context) {
+    	System.out.println("secureWhoAmI");
         return (User) context.getUserPrincipal();
     }
 

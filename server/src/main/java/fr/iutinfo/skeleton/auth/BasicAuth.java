@@ -4,7 +4,7 @@ import javax.xml.bind.DatatypeConverter;
 
 public class BasicAuth {
     public static String[] decode(String auth) {
-
+    	System.out.println("decode basic Auth");
         byte[] decodedBytes = DatatypeConverter.parseBase64Binary(extractBase64(auth));
 
         if (decodedBytes == null || decodedBytes.length == 0) {

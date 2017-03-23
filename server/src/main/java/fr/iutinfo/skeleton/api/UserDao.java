@@ -11,7 +11,7 @@ public interface UserDao {
     void createUserTable();
     
 
-    @SqlUpdate("insert into users (login,passwdHash,nom,prenom,isAdmin,tel,email,dob,search) values (:login,:passwdHash,:nom,:prenom,:isadmin,:tel,:email,:dob,:search)")
+    @SqlUpdate("insert into users (login,passwdHash,nom,prenom,isAdmin,tel,email,dob,search, salt) values (:login,:passwdHash,:nom,:prenom,:isadmin,:tel,:email,:dob,:search, :salt)")
     @GetGeneratedKeys
     int insert(@BindBean() User user);
 

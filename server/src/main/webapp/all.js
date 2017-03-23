@@ -32,10 +32,11 @@ function getSecure(url) {
 			success: function (data) {
 				console.log(data);
 				if(data.id != -1){
-					console.log("OK");
+					console.log("connexion :OK");
 					$("#login").hide();
 					$("#admin").show();
 				}else{
+					console.log("connexion : err");
 					$("#error").show();
 				}
 			},

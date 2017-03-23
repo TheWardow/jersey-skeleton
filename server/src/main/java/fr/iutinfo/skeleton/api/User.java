@@ -134,9 +134,11 @@ public class User implements Principal {
 
     public boolean isGoodPassword(String password) {
         if (isAnonymous()) {
+        	System.out.println("User is anonymous");
             return false;
         }
         String hash = buildHash(password, getSalt());
+        System.out.println("hash  = " + hash);
         return hash.equals(getPasswdHash());
     }
 
@@ -164,6 +166,7 @@ public class User implements Principal {
 
     public String getSalt() {
         if (salt == null) {
+        	System.out.println("Salt was null, generating salt");
             salt = generateSalt();
         }
         return salt;
@@ -208,6 +211,7 @@ public class User implements Principal {
         this.setId(dto.getId());
         this.setLogin(dto.getLogin());
         this.setPassword(dto.getPassword());
+        this.salt = getSalt();
     }
 
     public UserDto convertToDto() {

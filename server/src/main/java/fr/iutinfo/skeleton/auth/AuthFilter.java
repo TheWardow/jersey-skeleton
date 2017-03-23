@@ -21,6 +21,8 @@ public class AuthFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext containerRequest) throws WebApplicationException {
+    	System.out.println("AuthFilter");
+    	
         String authorizationHeader = containerRequest.getHeaderString(HttpHeaders.AUTHORIZATION);
         String scheme = containerRequest.getUriInfo().getRequestUri().getScheme();
         logger.debug("authorizationHeader : " + authorizationHeader);
@@ -36,6 +38,7 @@ public class AuthFilter implements ContainerRequestFilter {
                 logger.debug("good password !");
                 containerRequest.setSecurityContext(new AppSecurityContext(user, scheme));
             } else {
+            	System.out.println("badPassword");
                 containerRequest.setSecurityContext(new AppSecurityContext(User.getAnonymousUser(), scheme));
             }
         } else {

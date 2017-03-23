@@ -7,7 +7,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface CommandeDao {
-    @SqlUpdate("create table commande (id integer primary key autoincrement, idcar integer,idpicture integer, idnettoyeur,date datetime,duree integer,termine integer,accepte integer, foreign key(voitureid) references car(id), foreign key(nettoyeurid) references nettoyeur(id), foreign key(pictureid) references picture(id))")
+    @SqlUpdate("create table commande (id integer primary key autoincrement, idcar integer,idpicture integer, idcleaner integer, date datetime,duree integer,termine integer,accepte integer, foreign key(idcar) references car(id), foreign key(idcleaner) references cleaners(id), foreign key(idpicture) references picture(id))")
     void createCommandeTable();
     
 

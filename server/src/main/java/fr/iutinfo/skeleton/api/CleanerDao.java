@@ -10,6 +10,8 @@ public interface CleanerDao {
     @SqlUpdate("create table cleaners (login varchar(20) primary key, passwdHash varchar(64), nom varchar(30), prenom varchar(30), tel varchar(12), email varchar(100), dob date, salt varchar(64),localisation varchar(200), note double, search varchar(1024))")
     void createCleanerTable();
     
+    @SqlUpdate("drop table if exists cleaners")
+    void dropCleanerTable();
 
     @SqlUpdate("insert into cleaners (login,passwdHash,nom,prenom,tel,email,dob,search, salt, localisation, note) values (:login,:passwdHash,:nom,:prenom,:isadmin,:tel,:email,:dob,:search, :salt, :localisation, :note)")
     @GetGeneratedKeys

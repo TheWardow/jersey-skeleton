@@ -13,25 +13,28 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 public interface CarDao {
 
 	
-	@SqlUpdate("create table Car (Carid integer primary key autoincrement, userid integer, marque varchar(20), modele varchar(20), couleur varchar(20), commentaire text, foreign key(userid) references users(userid))")
+	@SqlUpdate("create table car (Carid integer primary key autoincrement, userid integer, marque varchar(20), modele varchar(20), couleur varchar(20), commentaire text, foreign key(userid) references users(userid))")
     void createCarTable();
+	
+	@SqlUpdate("drop table if exists car")
+    void dropCarTable();
 
-    @SqlUpdate("insert into Car (userid, marque, modele, couleur, commentaire) values (:userId,:marque,:modele, :couleur, :commentaire)")
+    @SqlUpdate("insert into car (userid, marque, modele, couleur, commentaire) values (:userId,:marque,:modele, :couleur, :commentaire)")
     @GetGeneratedKeys
     int insert(@BindBean() Car Car);
     
-    @SqlQuery("select * from Car where Carid = :id")
+    @SqlQuery("select * from car where Carid = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
     Car findById(@Bind("id") int id);
     
-    @SqlQuery("select * from Car")
+    @SqlQuery("select * from car")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Car> all();
     
-    @SqlQuery("select id from Car")
+    @SqlQuery("select id from car")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Car> search(@Bind("id") int id);
     
-    @SqlUpdate("delete from Car where id = :id")
+    @SqlUpdate("delete from car where id = :id")
     void delete(@Bind("id") int id);
 }

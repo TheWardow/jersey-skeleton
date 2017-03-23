@@ -42,11 +42,13 @@
 			<div class="row">
 				<div class="col-md-4">
 					<input type="text" name="userlogin" id="userlogin"
-						placeholder="Login" class="form-control" /> <input
+						placeholder="Login" class="form-control" /> 
+						<input
 						type="password" name="user" id="passwdlogin"
 						placeholder="Password" class="form-control" /> <br />
 					<button id="connexion" class="btn btn-default">Connexion</button>
 					<button id="simul" class="btn btn-default">Simulate</button>
+					<button id="new-user" class="btn btn-default">Create User</button>
 				</div>
 				<div class="col-md-3"></div>
 				<div class="col-md-5">
@@ -167,6 +169,9 @@
 		$(document).ready(function() {
 			$("#connexion").click(function() {
 				getForAll()
+			});
+			$("#new-user").click(function() {
+				postUserBdd($("#userlogin").val(), $("#passwdlogin").val());
 			});
 
 			$("#simul").click(function() {

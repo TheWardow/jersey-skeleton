@@ -55,25 +55,30 @@ function simulate(){
 	$("#admin").show();
 }
 
-function postUserBdd(name, alias, email, pwd) {
-	postUserGeneric(name, alias, email, pwd, "v1/user/");
+function postUserBdd(login, pwd) {
+	postUserGeneric( login, pwd, "v1/user/");
 }
 
-function postUserGeneric(name, alias, email, pwd, url) {
-	console.log("postUserGeneric " + url)
+function postUserGeneric(login, pwd, url) {
+	console.log("postUserGeneric " + url + login + pwd)
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
 		url : url,
 		dataType : "json",
 		data : JSON.stringify({
-			"name" : name,
-			"alias" : alias,
-			"email" : email,
+			"nom" : "toto",
+			"prenom" : "toto",
+			"dob" : new Date(),
+			"email" : "sfg@fzsegfzs.szefg",
+			"tel" : "05215954",
+			"isAdmin" : 0,
+			"login" : login,
 			"password" : pwd,
 			"id" : 0
 		}),
 		success : function(data, textStatus, jqXHR) {
+			console.log("OK !");
 			afficheUser(data);
 		},
 		error : function(jqXHR, textStatus, errorThrown) {

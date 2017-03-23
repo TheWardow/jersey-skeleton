@@ -21,7 +21,7 @@ public class User implements Principal {
     private Date dob;
     private String nom;
     private String prenom;
-    private boolean isAdmin;
+    private int isadmin;
     private int id = 0;
     private String email;
     private String password;
@@ -88,12 +88,12 @@ public class User implements Principal {
 		this.prenom = prenom;
 	}
 
-	public boolean isAdmin() {
-		return isAdmin;
+	public int getIsadmin() {
+		return isadmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setIsadmin(int isAdmin) {
+		this.isadmin = isAdmin;
 	}
 
 	public static User getAnonymousUser() {

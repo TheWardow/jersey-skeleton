@@ -47,13 +47,13 @@ public class Helper {
     }
 
 
-    private static User createFullUSer(String login, String password, String nom, String prenom, boolean isAdmin, String tel, Date dob, String email) {
+    private static User createFullUSer(String login, String password, String nom, String prenom, int isAdmin, String tel, Date dob, String email) {
         User user = new User(0, login);
         user.setEmail(email);
         user.setPassword(password);
         user.setNom(nom);
         user.setPrenom(prenom);
-        user.setAdmin(isAdmin);
+        user.setIsadmin(isAdmin);
         user.setTel(tel);
         user.setDob(dob);
         int id = dao.insert(user);

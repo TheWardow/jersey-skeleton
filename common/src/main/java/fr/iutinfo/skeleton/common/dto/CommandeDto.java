@@ -1,0 +1,72 @@
+package fr.iutinfo.skeleton.common.dto;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class CommandeDto{
+	
+    final static Logger logger = LoggerFactory.getLogger(CommandeDto.class);
+    private LocalDateTime date;
+    private boolean termine;
+    private int idCar;
+    private int idNettoyeur;
+    private int idPicture;
+    private int id;
+    private int duree; // Minutes
+    private boolean accepte;
+    
+    
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public LocalDateTime getDate() {
+		return date;
+	}
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
+	public boolean isTermine() {
+		return termine;
+	}
+	public void setTermine(boolean termine) {
+		this.termine = termine;
+	}
+	public int getIdCar() {
+		return idCar;
+	}
+	public void setIdCar(int idCar) {
+		this.idCar = idCar;
+	}
+	public int getIdNettoyeur() {
+		return idNettoyeur;
+	}
+	public void setIdNettoyeur(int idNettoyeur) {
+		this.idNettoyeur = idNettoyeur;
+	}
+	public int getIdPicture() {
+		return idPicture;
+	}
+	public void setIdPicture(int idPicture) {
+		this.idPicture = idPicture;
+	}
+	public int getDuree() {
+		return duree;
+	}
+	public void setDuree(int duree) {
+		this.duree = duree;
+	}
+	public boolean isAccepte() {
+		return accepte;
+	}
+	public void setAccepte(boolean accepte) {
+		this.accepte = accepte;
+	}
+    
+    
+}

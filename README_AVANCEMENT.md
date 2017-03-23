@@ -53,6 +53,17 @@ Codage
 	- Interface Création de compte Android (DOING)
 
 
+	Sprint 3
+
+Codage
+	- Formulaire voiture supplémentaire pour un utilisateur (DONE)
+	- Interface Création de compte Android (Design : DONE, fonctionnement : TO DO)
+	- Onglet "Rejoindre" du site web (DONE)
+	
+
+	Sprint 4
+	
+
 
 
 

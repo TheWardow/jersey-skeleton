@@ -59,6 +59,8 @@ Codage
 	- Formulaire voiture supplémentaire pour un utilisateur (DONE)
 	- Interface Création de compte Android (Design : DONE, fonctionnement : TO DO)
 	- Onglet "Rejoindre" du site web (DONE)
+	- Faire fonctionner la BDD (DOING)
+	- Traitement des informations du formulaire Android (DOING)
 	
 
 	Sprint 4

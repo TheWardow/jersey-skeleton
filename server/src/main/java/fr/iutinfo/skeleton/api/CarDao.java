@@ -13,7 +13,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 public interface CarDao {
 
 	
-	@SqlUpdate("create table car (Carid integer primary key autoincrement, userid integer, marque varchar(20), modele varchar(20), couleur varchar(20), commentaire text, foreign key(userid) references users(userid))")
+	@SqlUpdate("create table car (id integer primary key autoincrement, userid integer, marque varchar(20), modele varchar(20), couleur varchar(20), commentaire text, foreign key(userid) references users(userid))")
     void createCarTable();
 	
 	@SqlUpdate("drop table if exists car")
@@ -23,7 +23,7 @@ public interface CarDao {
     @GetGeneratedKeys
     int insert(@BindBean() Car Car);
     
-    @SqlQuery("select * from car where Carid = :id")
+    @SqlQuery("select * from car where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
     Car findById(@Bind("id") int id);
     
@@ -31,7 +31,7 @@ public interface CarDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Car> all();
     
-    @SqlQuery("select id from car")
+    @SqlQuery("select * from car where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Car> search(@Bind("id") int id);
     

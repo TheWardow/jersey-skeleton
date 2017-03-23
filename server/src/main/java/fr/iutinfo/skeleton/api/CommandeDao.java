@@ -11,7 +11,7 @@ public interface CommandeDao {
     void createCommandeTable();
     
 
-    @SqlUpdate("insert into commande (idcar,idpicture,idnettoyeur,date,duree,termine,accepte) values (:idcar,:idpicture,:idnettoyeur,:date,:duree,:termine,:accepte)")
+    @SqlUpdate("insert into commande (idcar,idpicture,idcleaner,date,duree,termine,accepte) values (:idcar,:idpicture,:idcleaner,:date,:duree,:termine,:accepte)")
     @GetGeneratedKeys
     int insert(@BindBean() Commande commande);
 

@@ -12,7 +12,7 @@ public class CommandeDto{
     private LocalDateTime date;
     private boolean termine;
     private int idCar;
-    private int idNettoyeur;
+    private int idCleaner;
     private int idPicture;
     private int id;
     private int duree; // Minutes
@@ -43,11 +43,11 @@ public class CommandeDto{
 	public void setIdCar(int idCar) {
 		this.idCar = idCar;
 	}
-	public int getIdNettoyeur() {
-		return idNettoyeur;
+	public int getIdCleaner() {
+		return idCleaner;
 	}
-	public void setIdNettoyeur(int idNettoyeur) {
-		this.idNettoyeur = idNettoyeur;
+	public void setIdCleaner(int idCleaner) {
+		this.idCleaner = idCleaner;
 	}
 	public int getIdPicture() {
 		return idPicture;

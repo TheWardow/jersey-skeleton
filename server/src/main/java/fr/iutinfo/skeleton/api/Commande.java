@@ -15,7 +15,7 @@ public class Commande{
     private LocalDateTime date;
     private boolean termine;
     private int idcar;
-    private int idnettoyeur;
+    private int idcleaner;
     private int idpicture;
     private int duree; // Minutes
     private boolean accepte;
@@ -23,7 +23,7 @@ public class Commande{
     public Commande(int id, int idCar, int idNettoyeur){
     	this.id = id;
     	this.idcar = idCar;
-    	this.idnettoyeur = idNettoyeur;
+    	this.idcleaner = idNettoyeur;
     }
     
     public Commande(){
@@ -62,12 +62,12 @@ public class Commande{
 		this.idcar = idCar;
 	}
 
-	public int getIdNettoyeur() {
-		return idnettoyeur;
+	public int getIdCleaner() {
+		return idcleaner;
 	}
 
-	public void setIdNettoyeur(int idNettoyeur) {
-		this.idnettoyeur = idNettoyeur;
+	public void setIdCleaner(int idCleaner) {
+		this.idcleaner = idCleaner;
 	}
 
 	public int getIdPicture() {
@@ -95,7 +95,7 @@ public class Commande{
 	}
     
 	public void initFromDto(CommandeDto dto) {
-        this.setIdNettoyeur(dto.getIdNettoyeur());
+        this.setIdCleaner(dto.getIdCleaner());
         this.setIdCar(dto.getIdCar());
         this.setIdPicture(dto.getIdPicture());
         this.setAccepte(dto.isAccepte());
@@ -106,7 +106,7 @@ public class Commande{
 
     public CommandeDto convertToDto() {
         CommandeDto dto = new CommandeDto();
-        dto.setIdNettoyeur(this.getIdNettoyeur());
+        dto.setIdCleaner(this.getIdCleaner());
         dto.setIdCar(this.getIdCar());
         dto.setIdPicture(this.getIdPicture());
         dto.setAccepte(this.isAccepte()); 

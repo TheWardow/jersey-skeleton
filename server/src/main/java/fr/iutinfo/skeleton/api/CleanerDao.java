@@ -25,8 +25,6 @@ public interface CleanerDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Cleaner> search(@Bind("login") String login);
 
-    @SqlUpdate("drop table if exists cleaners")
-    void dropUserTable();
 
     @SqlUpdate("delete from cleaners where login = :login")
     void delete(@Bind("login") int login);

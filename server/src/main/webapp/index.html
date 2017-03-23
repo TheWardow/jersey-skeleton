@@ -22,9 +22,25 @@
 
 	<div id="login">
 		<div class="container">
+			<div class="row" style="margin-top: 1em;">
+				<div class="col-md-12">
+					<div class="alert alert-danger alert-dismissable fade in" id="error">
+						<h5><strong>Erreur !</strong> Identifiants invalides</h5>
+					</div>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-md-6">
 					<h1>Administration :</h1>
+
+				</div>
+				<div class="col-md-6">
+					<h1>Devenir nettoyeur :</h1>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
 					<input type="text" name="userlogin" id="userlogin"
 						placeholder="Login" class="form-control" /> <input
 						type="password" name="user" id="passwdlogin"
@@ -32,16 +48,13 @@
 					<button id="connexion" class="btn btn-default">Connexion</button>
 					<button id="simul" class="btn btn-default">Simulate</button>
 				</div>
-				<div class="col-md-6">
-					<h1>Devenir nettoyeur :</h1>
+				<div class="col-md-3"></div>
+				<div class="col-md-5">
 					<button id="apply" class="btn btn-default">Nous rejoindre</button>
 				</div>
 			</div>
-			<div class="row" style="margin-top: 1em;">
-				<div class="col-md-4">
-					<div class="panel-body" id="error">Indentifiants invalides</div>
-				</div>
-			</div>
+
+
 		</div>
 	</div>
 
@@ -56,7 +69,10 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 					<h1>Offres d'emplois</h1>
-					<h4>Afin de devenir nettoyeur de voitures vous devez postuler à <a href="mailto:machin@gmail.com">machin@gmail.com</a></h4>
+					<h4>
+						Afin de devenir nettoyeur de voitures vous devez postuler à <a
+							href="mailto:machin@gmail.com">machin@gmail.com</a>
+					</h4>
 				</div>
 				<div clas="col-md-2"></div>
 			</div>

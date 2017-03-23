@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import static fr.iutinfo.skeleton.api.BDDFactory.getDbi;
 import static fr.iutinfo.skeleton.api.BDDFactory.tableExist;
 
-@Path("/user")
+@Path("/cleaner")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CleanerResource {

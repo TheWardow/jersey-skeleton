@@ -23,8 +23,8 @@ public class CleanerResource {
     
 
     public CleanerResource() throws SQLException {
-        if (!tableExist("users")) {
-            logger.debug("Crate table users");
+        if (!tableExist("cleaners")) {
+            logger.debug("Crate table cleaners");
             dao.createCleanerTable();
         }
     }

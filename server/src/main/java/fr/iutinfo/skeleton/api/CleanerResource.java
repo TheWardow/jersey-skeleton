@@ -1,5 +1,6 @@
 package fr.iutinfo.skeleton.api;
 
+import fr.iutinfo.skeleton.common.dto.CleanerDto;
 import fr.iutinfo.skeleton.common.dto.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,52 +19,52 @@ import static fr.iutinfo.skeleton.api.BDDFactory.tableExist;
 @Consumes(MediaType.APPLICATION_JSON)
 public class CleanerResource {
     final static Logger logger = LoggerFactory.getLogger(CleanerResource.class);
-    private static UserDao dao = getDbi().open(UserDao.class);
+    private static CleanerDao dao = getDbi().open(CleanerDao.class);
     
 
     public CleanerResource() throws SQLException {
         if (!tableExist("users")) {
             logger.debug("Crate table users");
-            dao.createUserTable();
+            dao.createCleanerTable();
         }
     }
 
     @POST
-    public UserDto createUser(UserDto dto) {
-        User user = new User();
-        user.initFromDto(dto);
-        user.resetPasswordHash();
-        int id = dao.insert(user);
+    public CleanerDto createCleaner(CleanerDto dto) {
+        Cleaner cleaner = new Cleaner();
+        cleaner.initFromDto(dto);
+        cleaner.resetPasswordHash();
+        int id = dao.insert(cleaner);
         dto.setId(id);
         return dto;
     }
 
     @GET
     @Path("/{name}")
-    public UserDto getUser(@PathParam("name") String login) {
-        User user = dao.findByLogin(login);
-        if (user == null) {
+    public CleanerDto getCleaner(@PathParam("name") String login) {
+        Cleaner cleaner = dao.findByLogin(login);
+        if (cleaner == null) {
             throw new WebApplicationException(404);
         }
-        return user.convertToDto();
+        return cleaner.convertToDto();
     }
 
     @GET
-    public List<UserDto> getAllUsers(@QueryParam("q") String query) {
-        List<User> users;
+    public List<CleanerDto> getAllCleaners(@QueryParam("q") String query) {
+        List<Cleaner> cleaners;
         if (query == null) {
-            users = dao.all();
+            cleaners = dao.all();
         } else {
-            logger.debug("Search users with query: " + query);
-            users = dao.search("%" + query + "%");
+            logger.debug("Search cleaners with query: " + query);
+            cleaners = dao.search("%" + query + "%");
         }
-        return users.stream().map(User::convertToDto).collect(Collectors.toList());
+        return cleaners.stream().map(Cleaner::convertToDto).collect(Collectors.toList());
     }
 
     @DELETE
-    @Path("/{id}")
-    public void deleteUser(@PathParam("id") int id) {
-        dao.delete(id);
+    @Path("/{login}")
+    public void deleteCleaner(@PathParam("login") int login) {
+        dao.delete(login);
     }
 
 }

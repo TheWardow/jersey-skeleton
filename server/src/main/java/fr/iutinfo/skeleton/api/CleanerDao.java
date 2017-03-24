@@ -13,7 +13,7 @@ public interface CleanerDao {
     @SqlUpdate("drop table if exists cleaners")
     void dropCleanerTable();
 
-    @SqlUpdate("insert into cleaners (login,passwdHash,nom,prenom,tel,email,dob,search, salt, localisation, note) values (:login,:passwdHash,:nom,:prenom,:isadmin,:tel,:email,:dob,:search, :salt, :localisation, :note)")
+    @SqlUpdate("insert into cleaners (login,passwdHash,nom,prenom,tel,email,dob,search, salt, localisation, note) values (:login,:passwdHash,:nom,:prenom,:tel,:email,:dob,:search, :salt, :localisation, :note)")
     @GetGeneratedKeys
     int insert(@BindBean() Cleaner cleaner);
 

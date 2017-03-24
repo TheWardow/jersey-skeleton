@@ -12,8 +12,7 @@ public class CommandeDto{
     private LocalDateTime date;
     private boolean termine;
     private int idCar;
-    private int idCleaner;
-    private int idPicture;
+    private String loginCleaner;
     private int id;
     private int duree; // Minutes
     private boolean accepte;
@@ -43,17 +42,12 @@ public class CommandeDto{
 	public void setIdCar(int idCar) {
 		this.idCar = idCar;
 	}
-	public int getIdCleaner() {
-		return idCleaner;
+	
+	public String getLoginCleaner() {
+		return loginCleaner;
 	}
-	public void setIdCleaner(int idCleaner) {
-		this.idCleaner = idCleaner;
-	}
-	public int getIdPicture() {
-		return idPicture;
-	}
-	public void setIdPicture(int idPicture) {
-		this.idPicture = idPicture;
+	public void setLoginCleaner(String loginCleaner) {
+		this.loginCleaner = loginCleaner;
 	}
 	public int getDuree() {
 		return duree;

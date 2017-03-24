@@ -85,6 +85,13 @@ public class Helper {
 		car.setId(id);
 		return car;
 	}
+    
+    public static Commande createCommande(int idCar, String loginCleaner) {
+		Commande commande = new Commande(0, idCar, loginCleaner);
+		int id = commandedao.insert(commande);
+		commande.setId(id);
+		return commande;
+	}
 
 
     private static User createFullUSer(String nom, String prenom, String login, String email, String password, int isAdmin) {

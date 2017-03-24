@@ -12,6 +12,15 @@ public class CarDto {
     private String couleur;
     private int id = 0;
     private String commentaire;
+    private String userlogin;
+
+	public String getUserlogin() {
+		return userlogin;
+	}
+
+	public void setUserlogin(String userlogin) {
+		this.userlogin = userlogin;
+	}
 
 	public String getMarque() {
 		return marque;

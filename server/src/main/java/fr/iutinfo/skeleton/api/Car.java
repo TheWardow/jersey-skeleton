@@ -103,15 +103,17 @@ public class Car {
         this.setId(dto.getId());
         this.setCouleur(dto.getCouleur());
         this.setCommentaire(dto.getCommentaire());
+        this.setUserLogin(dto.getUserlogin());
     }
 
     public CarDto convertToDto() {
         CarDto dto = new CarDto();
-        dto.setMarque(dto.getMarque());
-        dto.setModele(dto.getModele());
-        dto.setId(dto.getId());
-        dto.setCouleur(dto.getCouleur());
-        dto.setCommentaire(dto.getCommentaire());
+        dto.setMarque(this.getMarque());
+        dto.setModele(this.getModele());
+        dto.setId(this.getId());
+        dto.setCouleur(this.getCouleur());
+        dto.setCommentaire(this.getCommentaire());
+        dto.setUserlogin(this.getUserlogin());
         return dto;
     }
 }

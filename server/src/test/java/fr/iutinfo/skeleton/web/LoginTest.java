@@ -9,6 +9,7 @@ import javax.ws.rs.core.Application;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 
+import org.eclipse.persistence.sessions.coordination.Command;
 import org.glassfish.jersey.internal.util.Base64;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Before;
@@ -19,6 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.api.Car;
 import fr.iutinfo.skeleton.api.Cleaner;
+import fr.iutinfo.skeleton.api.Commande;
 import fr.iutinfo.skeleton.api.Helper;
 import fr.iutinfo.skeleton.api.User;
 import fr.iutinfo.skeleton.api.UserDao;
@@ -44,10 +46,11 @@ public class LoginTest extends JerseyTest {
 
     @Test
     public void should_create_table() {
-    	User a = Helper.createAdminWithPassword("admin", "admin");
-        User u = Helper.createUserWithPassword("user", "user");
-        Cleaner c = Helper.createCleanerWithPassword("cleaner", "cleaner");
+    	User a = Helper.createAdminWithPassword("admin1", "admin");
+        User u = Helper.createUserWithPassword("user1", "user");
+        Cleaner c = Helper.createCleanerWithPassword("cleaner1", "cleaner");
         Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","");
+        Commande com = Helper.createCommande(car.getId(), c.getLogin());
         
         assertEquals(1, 1);
     }

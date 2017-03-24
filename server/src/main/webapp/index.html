@@ -99,7 +99,7 @@
 			</ul>
 		</nav>
 
-		<div id="new-admin-form" class="data" style="display: none">
+		<div id="new-admin-form" class="form" style="display: none">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
@@ -115,7 +115,7 @@
 			</div>
 		</div>
 		
-		<div id="new-cleaner-form" class="data" style="display: none">
+		<div id="new-cleaner-form" class="form" style="display: none">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
@@ -140,7 +140,7 @@
 
 			<div class="row">
 
-				<div id="commands" class="col-md-4 data">
+				<div id="commands" class="col-md-4 data" style="background-color: #a6a6a6;">
 					<h4>Commandes</h4>
 					<table class="table">
 						<tr>
@@ -167,7 +167,7 @@
 				</div>
 
 
-				<div id="stock" class="col-md-4 data">
+				<div id="stock" class="col-md-4 data" style="background-color: #e6e6e6;">
 					<h4>Stock</h4>
 					<table class="table">
 						<tr>
@@ -191,20 +191,16 @@
 			$("#new-user").click(function() {
 				postUserBdd($("#userlogin").val(), $("#passwdlogin").val());
 			});
-
 			$("#new-admin-form-btn").click(function() {
 				postAdminBdd($("#adminlogin").val(), $("#adminpasswd").val());
 			});
-
 			$("#simul").click(function() {
 				simulate();
 			});
-
 			$("#apply").click(function() {
 				$("#login").hide();
 				$("#application").show();
 			});
-
 			$("#new-admin").click(function() {
 				$("#new-admin-form").toggle();
 				$("#new-cleaner-form").hide();
@@ -214,32 +210,29 @@
 				$("#new-cleaner-form").toggle();
 				$("#new-admin-form").hide();
 			});
-
 			$("#general-view").click(function() {
 				$(".data").attr("class", "col-md-4 data");
 				$(".data").show();
-				$("#new-admin-form").hide();
-				$("#new-cleaner-form").hide();
+				$(".form").hide();
 			});
-
 			$("#list-commands").click(function() {
-				$(".data").hide();				
+				$(".data").hide();	
+				$(".form").hide();
 				$("#commands").attr("class", "col-md-10 data");
 				$("#commands").show();
 			});
-
 			$("#list-cleaners").click(function() {
-				$(".data").hide();				
+				$(".data").hide();	
+				$(".form").hide();
 				$("#cleaners").attr("class", "col-md-10 data");
 				$("#cleaners").show();
 			});
-
 			$("#products-stock").click(function() {
-				$(".data").hide();				
+				$(".data").hide();	
+				$(".form").hide();
 				$("#stock").attr("class", "col-md-10 data");
 				$("#stock").show();
 			});
-
 			$("#error").hide();
 			$("#application").hide();
 		});

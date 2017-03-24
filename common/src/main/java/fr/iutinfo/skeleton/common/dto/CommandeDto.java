@@ -1,7 +1,6 @@
 package fr.iutinfo.skeleton.common.dto;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

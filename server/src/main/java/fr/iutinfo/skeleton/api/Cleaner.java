@@ -12,7 +12,6 @@ import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 
 import fr.iutinfo.skeleton.common.dto.CleanerDto;
-import fr.iutinfo.skeleton.common.dto.UserDto;
 
 public class Cleaner implements Principal {
     final static Logger logger = LoggerFactory.getLogger(Cleaner.class);

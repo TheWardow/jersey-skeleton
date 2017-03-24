@@ -1,13 +1,11 @@
 package fr.iutinfo.skeleton.api;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.CommandeDto;
-import fr.iutinfo.skeleton.common.dto.UserDto;
 
 public class Commande{
     final static Logger logger = LoggerFactory.getLogger(Commande.class);

@@ -1,14 +1,15 @@
 package fr.iutinfo.skeleton.api;
 
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.inject.Singleton;
+
 import org.skife.jdbi.v2.DBI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sqlite.SQLiteDataSource;
-
-import javax.inject.Singleton;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 @Singleton
 public class BDDFactory {

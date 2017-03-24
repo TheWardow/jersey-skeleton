@@ -1,5 +1,6 @@
 package fr.iutinfo.skeleton.api;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.ws.rs.core.GenericType;
@@ -94,7 +95,7 @@ public class Helper {
 	}
     
     public static Picture createPicture(int commandeId, String path, int nettoye) {
-		Picture picture = new Picture(commandeId, path, nettoye);
+		Picture picture = new Picture(commandeId, path, nettoye, LocalDateTime.now());
 		int id = picturedao.insert(picture);
 		picture.setId(id);
 		return picture;

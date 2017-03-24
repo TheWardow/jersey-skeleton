@@ -1,11 +1,5 @@
 package fr.iutinfo.skeleton.auth;
 
-import fr.iutinfo.skeleton.api.BDDFactory;
-import fr.iutinfo.skeleton.api.User;
-import fr.iutinfo.skeleton.api.UserDao;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -13,6 +7,13 @@ import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import fr.iutinfo.skeleton.api.BDDFactory;
+import fr.iutinfo.skeleton.api.User;
+import fr.iutinfo.skeleton.api.UserDao;
 
 @Provider
 @PreMatching

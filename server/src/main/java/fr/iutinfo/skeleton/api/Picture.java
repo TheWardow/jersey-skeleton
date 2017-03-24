@@ -64,7 +64,7 @@ public class Picture {
 	}
 
 	public void initFromDto(PictureDto dto) {
-        this.setDate(dto.getDate());
+        this.setDate(LocalDateTime.now());
         this.setNettoye(dto.getNettoye());
         this.setPath(dto.getPath());
         this.setCommandeid(dto.getCommandeid());
@@ -72,7 +72,7 @@ public class Picture {
 
     public PictureDto convertToDto() {
     	PictureDto dto = new PictureDto();
-        dto.setDate(this.getDate());
+        dto.setDate(LocalDateTime.now());
         dto.setNettoye(this.getNettoye());
         dto.setPath(dto.getPath());
         dto.setCommandeid(this.getCommandeid());

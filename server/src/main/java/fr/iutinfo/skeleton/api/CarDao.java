@@ -31,10 +31,6 @@ public interface CarDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Car> all();
     
-    @SqlQuery("select * from car where id = :id")
-    @RegisterMapperFactory(BeanMapperFactory.class)
-    List<Car> search(@Bind("id") int id);
-    
     @SqlUpdate("delete from car where id = :id")
     void delete(@Bind("id") int id);
 }

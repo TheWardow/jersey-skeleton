@@ -33,9 +33,5 @@ public interface CleanerDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Cleaner> all();
 
-    @SqlQuery("select * from cleaners where login = :login")
-    @RegisterMapperFactory(BeanMapperFactory.class)
-    Cleaner findById(@Bind("login") int login);
-
     void close();
 }

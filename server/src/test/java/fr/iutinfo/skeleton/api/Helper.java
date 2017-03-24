@@ -17,6 +17,7 @@ public class Helper {
     private static final CleanerDao cleanerdao = BDDFactory.getDbi().open(CleanerDao.class);
     private static final PictureDao picturedao = BDDFactory.getDbi().open(PictureDao.class);
     private static final CommandeDao commandedao = BDDFactory.getDbi().open(CommandeDao.class);
+    private static final AdresseDao adressedao = BDDFactory.getDbi().open(AdresseDao.class);
     static GenericType<List<UserDto>> listUserResponseType = new GenericType<List<UserDto>>() {
     };
 
@@ -31,6 +32,8 @@ public class Helper {
     	picturedao.createPictureTable();
     	commandedao.dropCommandeTable();
     	commandedao.createCommandeTable();
+    	adressedao.dropAdresseTable();
+    	adressedao.createAdresseTable();
     }
 
     static User createUserWithName(String name) {
@@ -79,6 +82,12 @@ public class Helper {
         return user;
     }
     
+    public static Adresse createAdresse(String numero, String voie, String ville, int cp, String login) {
+        Adresse adresse = new Adresse(numero, voie, ville, cp, login);
+    	int id = adressedao.insert(adresse);
+        adresse.setAdresseId(id);
+        return adresse;
+    }
     
     public static Car createCar(String userLogin, String marque, String modele, String couleur, String commentaire) {
 		Car car = new Car(userLogin, marque, modele, couleur, 0, commentaire);

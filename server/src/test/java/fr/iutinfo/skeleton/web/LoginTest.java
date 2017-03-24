@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.iutinfo.skeleton.api.Adresse;
 import fr.iutinfo.skeleton.api.Car;
 import fr.iutinfo.skeleton.api.Cleaner;
 import fr.iutinfo.skeleton.api.Commande;
@@ -44,6 +45,7 @@ public class LoginTest extends JerseyTest {
         Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","");
         Commande com = Helper.createCommande(car.getId(), c.getLogin());
         Picture pic = Helper.createPicture(c.getId(), "img/photo.jpg", 0);
+        Adresse adresse = Helper.createAdresse("10B", "rue Simone de Beauvoir", "Loos", 59120, u.getLogin());
         assertEquals(1, 1);
     }
     /*

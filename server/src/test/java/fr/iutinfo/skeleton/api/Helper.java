@@ -43,9 +43,9 @@ public class Helper {
         return createUser(user);
     }
 
-    public static User createUserWithPassword(String name, String passwd, String salt) {
+    public static User createUserWithPassword(String name, String passwd) {
         User user = new User(0, name);
-        user.setSalt(salt);
+        user.setSalt(user.getSalt());
         user.setPassword(passwd);
         logger.debug("createUserWithPassword Hash : " + user.getPasswdHash());
         return createUser(user);

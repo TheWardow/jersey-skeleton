@@ -18,6 +18,7 @@ public class Helper {
     private static final PictureDao picturedao = BDDFactory.getDbi().open(PictureDao.class);
     private static final CommandeDao commandedao = BDDFactory.getDbi().open(CommandeDao.class);
     private static final AdresseDao adressedao = BDDFactory.getDbi().open(AdresseDao.class);
+    private static final ProductDao productdao = BDDFactory.getDbi().open(ProductDao.class);
     static GenericType<List<UserDto>> listUserResponseType = new GenericType<List<UserDto>>() {
     };
 
@@ -34,6 +35,8 @@ public class Helper {
     	commandedao.createCommandeTable();
     	adressedao.dropAdresseTable();
     	adressedao.createAdresseTable();
+    	productdao.dropProductTable();
+    	productdao.createProductTable();
     }
 
     static User createUserWithName(String name) {
@@ -67,6 +70,13 @@ public class Helper {
         int id = userdao.insert(user);
         user.setId(id);
         return user;
+    }
+    
+    public static Product createProduct(String type, String modele, String cleanerLogin){
+    	Product product = new Product(type, modele, cleanerLogin);
+    	int id = productdao.insert(product);
+    	product.setId(id);
+    	return product;
     }
     
     public static Cleaner createCleanerWithPassword(String name, String passwd) {

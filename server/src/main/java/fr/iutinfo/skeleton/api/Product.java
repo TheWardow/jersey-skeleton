@@ -1,27 +1,29 @@
 package fr.iutinfo.skeleton.api;
 
-import java.security.SecureRandom;
-import java.util.Date;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Charsets;
-import com.google.common.hash.Hasher;
-import com.google.common.hash.Hashing;
-
 import fr.iutinfo.skeleton.common.dto.ProductDto;
-import fr.iutinfo.skeleton.common.dto.UserDto;
 
 public class Product{
     final static Logger logger = LoggerFactory.getLogger(Product.class);
     
     private int id;
     private String type;
-    private String modele;
+    private String marque;
     private String cleanerLogin;
     
-    public int getId() {
+    public Product(String type, String modele, String cleanerLogin) {
+		this.type = type;
+		this.marque = modele;
+		this.cleanerLogin = cleanerLogin;
+	}
+    
+    public Product(){
+    	
+    }
+
+	public int getId() {
 		return id;
 	}
 
@@ -37,12 +39,12 @@ public class Product{
 		this.type = type;
 	}
 
-	public String getModele() {
-		return modele;
+	public String getMarque() {
+		return marque;
 	}
 
-	public void setModele(String modele) {
-		this.modele = modele;
+	public void setMarque(String marque) {
+		this.marque = marque;
 	}
 	
 	public String getCleanerLogin() {
@@ -55,7 +57,7 @@ public class Product{
 
 	public void initFromDto(ProductDto dto) {
         this.setCleanerLogin(dto.getCleanerLogin());
-        this.setModele(dto.getModele());
+        this.setMarque(dto.getMarque());
         this.setType(dto.getType());
         this.setId(dto.getId());
     }
@@ -63,7 +65,7 @@ public class Product{
     public ProductDto convertToDto() {
         ProductDto dto = new ProductDto();
         dto.setCleanerLogin(this.getCleanerLogin());
-        dto.setModele(this.getModele());
+        dto.setMarque(this.getMarque());
         dto.setType(this.getType());
         dto.setId(this.getId());
         return dto;

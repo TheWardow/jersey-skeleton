@@ -7,7 +7,7 @@ public class ProductDto{
 	
     final static Logger logger = LoggerFactory.getLogger(ProductDto.class);
     private int id;
-    private String modele;
+    private String marque;
     private String type;
     private String cleanerLogin;
     
@@ -17,11 +17,11 @@ public class ProductDto{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getModele() {
-		return modele;
+	public String getMarque() {
+		return marque;
 	}
-	public void setModele(String modele) {
-		this.modele = modele;
+	public void setMarque(String marque) {
+		this.marque = marque;
 	}
 	public String getType() {
 		return type;

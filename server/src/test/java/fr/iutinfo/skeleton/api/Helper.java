@@ -92,6 +92,13 @@ public class Helper {
 		commande.setId(id);
 		return commande;
 	}
+    
+    public static Picture createPicture(int commandeId, String path, int nettoye) {
+		Picture picture = new Picture(commandeId, path, nettoye);
+		int id = picturedao.insert(picture);
+		picture.setId(id);
+		return picture;
+	}
 
 
     private static User createFullUSer(String nom, String prenom, String login, String email, String password, int isAdmin) {

@@ -19,6 +19,12 @@ public class Picture {
     public Picture(int id) {
         this.id = id;
     }
+    
+    public Picture(int commandeId, String path,int nettoye) {
+        this.commandeid = commandeId;
+        this.path = path;
+        this.nettoye = nettoye;
+    }
 
     public Picture() {
     }

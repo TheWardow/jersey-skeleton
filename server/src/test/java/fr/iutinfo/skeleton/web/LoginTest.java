@@ -22,6 +22,7 @@ import fr.iutinfo.skeleton.api.Car;
 import fr.iutinfo.skeleton.api.Cleaner;
 import fr.iutinfo.skeleton.api.Commande;
 import fr.iutinfo.skeleton.api.Helper;
+import fr.iutinfo.skeleton.api.Picture;
 import fr.iutinfo.skeleton.api.User;
 import fr.iutinfo.skeleton.api.UserDao;
 import fr.iutinfo.skeleton.common.dto.CleanerDto;
@@ -51,7 +52,7 @@ public class LoginTest extends JerseyTest {
         Cleaner c = Helper.createCleanerWithPassword("cleaner1", "cleaner");
         Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","");
         Commande com = Helper.createCommande(car.getId(), c.getLogin());
-        
+        Picture pic = Helper.createPicture(c.getId(), "img/photo.jpg", 0);
         assertEquals(1, 1);
     }
     /*

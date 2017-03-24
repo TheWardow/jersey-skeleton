@@ -58,18 +58,19 @@ public class CarResource {
         }
         return Car.convertToDto();
     }
-    /*
+    
     @GET
     public List<CarDto> getAllCar(@QueryParam("q") String query) {
-        List<Car> Cars;
+        List<Car> Cars = null;
         if (query == null) {
             Cars = dao.all();
         } else {
-            logger.debug("Search users with query: " + query);
-            Cars = dao.search("%" + query + "%");
+            /*logger.debug("Search users with query: " + query);
+            Cars = dao.search("%" + query + "%");*/
         }
-        return Cars.stream().map(User::convertToDto).collect(Collectors.toList());
-    }*/
+        System.out.println("get all car" + Cars);
+        return Cars.stream().map(Car::convertToDto).collect(Collectors.toList());
+    }
     
     @DELETE
     @Path("/{id}")

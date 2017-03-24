@@ -101,8 +101,8 @@ public class Helper {
         return adresse;
     }
     
-    public static Car createCar(String userLogin, String marque, String modele, String couleur, String commentaire) {
-		Car car = new Car(userLogin, marque, modele, couleur, 0, commentaire);
+    public static Car createCar(String userLogin, String marque, String modele, String couleur, String commentaire, String immatriculation) {
+		Car car = new Car(userLogin, marque, modele, couleur, 0, commentaire,immatriculation);
 		int id = cardao.insert(car);
 		car.setId(id);
 		return car;
@@ -110,6 +110,7 @@ public class Helper {
     
     public static Commande createCommande(int idCar, String loginCleaner) {
 		Commande commande = new Commande(0, idCar, loginCleaner);
+		//commande.setDate(LocalDateTime.now());
 		int id = commandedao.insert(commande);
 		commande.setId(id);
 		return commande;

@@ -43,7 +43,7 @@ public class LoginTest extends JerseyTest {
     	User a = Helper.createAdminWithPassword("admin1", "admin");
         User u = Helper.createUserWithPassword("user1", "user");
         Cleaner c = Helper.createCleanerWithPassword("cleaner1", "cleaner", "Tahiti", "Bob");
-        Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","");
+        Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","","154 AFD 59");
         Commande com = Helper.createCommande(car.getId(), c.getLogin());
         Picture pic = Helper.createPicture(c.getId(), "img/photo.jpg", 0);
         Adresse adresse = Helper.createAdresse("10B", "rue Simone de Beauvoir", "Loos", 59120, u.getLogin());

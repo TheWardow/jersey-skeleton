@@ -13,13 +13,13 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 public interface CarDao {
 
 	
-	@SqlUpdate("create table car (id integer primary key autoincrement, userlogin varchar(20), marque varchar(20), modele varchar(20), couleur varchar(20), commentaire text, foreign key(userlogin) references users(login))")
+	@SqlUpdate("create table car (id integer primary key autoincrement, userlogin varchar(20), immatriculation varchar(20), marque varchar(20), modele varchar(20), couleur varchar(20), commentaire text, foreign key(userlogin) references users(login))")
     void createCarTable();
 	
 	@SqlUpdate("drop table if exists car")
     void dropCarTable();
 
-    @SqlUpdate("insert into car (userlogin, marque, modele, couleur, commentaire) values (:userlogin,:marque,:modele, :couleur, :commentaire)")
+    @SqlUpdate("insert into car (userlogin, immatriculation, marque, modele, couleur, commentaire) values (:userlogin,:immatriculation, :marque,:modele, :couleur, :commentaire)")
     @GetGeneratedKeys
     int insert(@BindBean() Car Car);
     

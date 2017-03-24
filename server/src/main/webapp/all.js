@@ -31,12 +31,13 @@ function getSecure(url) {
 			},
 			success: function (data) {
 				console.log(data);
-				if(data.id != -1){
+				if(data.id != -1 && data.isadmin == 1){
 					console.log("connexion :OK");
 					$("#login").hide();
 					$("#admin").show();
 					getCleanersList();
 					getStockList();
+					getCommandList();
 				}else{
 					console.log("connexion : err");
 					$("#error").show();
@@ -115,11 +116,13 @@ function getCommandList(){
 		},
 		success: function (data) {
 			console.log("getCommandList success");
+			console.log(data);
 			var table = $("#table-cmd")
 			
 			for(i=0; i<data.length; i++){
-				var ligne = "<tr><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
-				$("#table-stock").append(ligne);
+				var carData = getCarInfo(data[i].idCar);
+				var ligne = "<tr><td>"+data[i].id+"</td><td>"+data[i].date+"</td><td>"+data[i].adresse+"</td><td>"+carData.immatriculation+"</td><td>"+"voiture n°" +data[i].idCar+"</td><td>"+data[i].termine+"</td></tr>";
+				$("#table-cmd").append(ligne);
 			}
 			
 		},
@@ -130,6 +133,28 @@ function getCommandList(){
 	});
 	
 }
+function getCarInfo(id){
+	var carData;
+	$.ajax
+	({
+		async: false,
+		type: "GET",
+		url: "v1/car/"+id,
+		dataType: 'json',
+		beforeSend : function(req) {
+		},
+		success:function (data) {
+			console.log("getCarData " + id + " success");
+			carData = data;
+			
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error get car data : ' + id+" " + textStatus);
+			
+		}
+	});
+	return carData;
+}
 
 
 function simulate(){
@@ -137,6 +162,7 @@ function simulate(){
 	$("#admin").show();
 	getCleanersList();
 	getStockList();
+	getCommandList();
 
 }
 

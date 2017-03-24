@@ -13,6 +13,17 @@ public class CarDto {
     private int id = 0;
     private String commentaire;
     private String userlogin;
+    private String immatriculation;
+
+    
+    
+	public String getImmatriculation() {
+		return immatriculation;
+	}
+
+	public void setImmatriculation(String immatriculation) {
+		this.immatriculation = immatriculation;
+	}
 
 	public String getUserlogin() {
 		return userlogin;

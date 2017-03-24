@@ -64,19 +64,19 @@ function getCleanersList(){
 		success: function (data) {
 			console.log("getCleanersList success");
 			var table = $("#table-cleaners")
-			
+
 			for(i=0; i<data.length; i++){
 				var ligne = "<tr><td>"+data[i].nom+"</td><td>"+data[i].prenom+"</td><td>"+data[i].disponible+"</td><td>"+data[i].nbCommandes+"</td><td>"+data[i].location+"</td></tr>";
 				$("#table-cleaners").append(ligne);
 			}
-			
+
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('error get cleaners list: ' + textStatus);
-			
+
 		}
 	});
-	
+
 }
 
 function getStockList(){
@@ -90,19 +90,19 @@ function getStockList(){
 		success: function (data) {
 			console.log("getStockList success");
 			var table = $("#table-stock")
-			
+
 			for(i=0; i<data.length; i++){
 				var ligne = "<tr><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
 				$("#table-stock").append(ligne);
 			}
-			
+
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('error get stock list: ' + textStatus);
-			
+
 		}
 	});
-	
+
 }
 
 function getCommandList(){
@@ -116,19 +116,19 @@ function getCommandList(){
 		success: function (data) {
 			console.log("getCommandList success");
 			var table = $("#table-cmd")
-			
+
 			for(i=0; i<data.length; i++){
 				var ligne = "<tr><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
 				$("#table-stock").append(ligne);
 			}
-			
+
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('error get stock list: ' + textStatus);
-			
+
 		}
 	});
-	
+
 }
 
 
@@ -137,7 +137,6 @@ function simulate(){
 	$("#admin").show();
 	getCleanersList();
 	getStockList();
-
 }
 
 function postUserBdd(login, pwd) {
@@ -172,6 +171,8 @@ function postUserGeneric(login, pwd, url) {
 	});
 }
 
+
+
 function postAdminBdd(login, pwd) {
 	console.log("postAdminBdd " + "v1/user/" )
 	$.ajax({
@@ -196,6 +197,35 @@ function postAdminBdd(login, pwd) {
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			console.log('postUser error: ' + textStatus);
+		}
+	});
+}
+
+function postCleanerBdd(name, surname, tel, town) {
+	console.log("postCleanerBdd " + "v1/cleaner/" );
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/cleaner/",
+		dataType : "json",
+		data : JSON.stringify({
+			"id" : 0,
+			"nom" : name,
+			"prenom" : surname,
+			"tel" : tel,
+			"dob" : new Date(),
+			"email" : "",
+			"login" : "",
+			"password" : "",
+			"localisation" : town,
+			"note" : 0
+		}),
+		success : function(data, textStatus, jqXHR) {
+			console.log("OK !");
+			afficheUser(data);
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log('postCleaner error: ' + textStatus);
 		}
 	});
 }

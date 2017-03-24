@@ -16,13 +16,13 @@
 
 <!-- Code local -->
 <script src="all.js"></script>
-<link rel="stylesheet"href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 
 	<div id="login">
-		
+
 		<img src="img/logo.png" alt="logo" height="65" width="200">
 		<div class="container">
 			<div class="row" style="margin-top: 1em;">
@@ -35,6 +35,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-md-6">
 					<h1>Administration :</h1>
@@ -45,6 +46,7 @@
 
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-md-3">
 					<input type="text" name="userlogin" id="userlogin"
@@ -59,6 +61,7 @@
 				<div class="col-md-5">
 					<button id="apply" class="btn btn-default">Nous rejoindre</button>
 				</div>
+
 			</div>
 
 
@@ -78,7 +81,7 @@
 					<h1>Offres d'emplois</h1>
 					<h4>
 						Afin de devenir nettoyeur de voitures vous devez postuler à <a
-							href="mailto:machin@gmail.com">machin@gmail.com</a>
+							href="mailto:machin@gmail.com" style="color: white">recruit.astiko@gmail.com</a>
 					</h4>
 				</div>
 				<div class="col-md-2"></div>
@@ -114,16 +117,19 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div id="new-cleaner-form" class="form" style="display: none">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
 						<h4>Nouveau Nettoyeur</h4>
-						<input type="text" name="cleanername" id="cleanername"
-							placeholder="Name" class="form-control" /> 
 						<input type="text" name="cleanersurname" id="cleanersurname"
-							placeholder="Surname" class="form-control" /> <br />
+							placeholder="Surname" class="form-control" /> <input type="text"
+							name="cleanername" id="cleanername" placeholder="Name"
+							class="form-control" /> <input type="text" name="cleanertown"
+							id="cleanertown" placeholder="Localisation" class="form-control" />
+						<input type="text" name="cleanerphone" id="cleanerphone"
+							placeholder="Phone Number" class="form-control" /> <br />
 						<button id="new-cleaner-form-btn" class="btn btn-default">Create
 							Cleaner</button>
 					</div>
@@ -195,6 +201,12 @@
 			$("#new-admin-form-btn").click(function() {
 				postAdminBdd($("#adminlogin").val(), $("#adminpasswd").val());
 			});
+			$("#new-cleaner-form-btn").click(function() {
+				postCleanerBdd(
+						$("#cleanername").val(), $("#cleanersurname").val(), 
+						$("#cleanertown").val(), $("#cleanerphone").val()
+				);
+			});
 			$("#simul").click(function() {
 				simulate();
 			});
@@ -219,19 +231,19 @@
 			$("#list-commands").click(function() {
 				$(".data").hide();	
 				$(".form").hide();
-				$("#commands").attr("class", "col-md-10 data");
+				$("#commands").attr("class", "col-md-8 data");
 				$("#commands").show();
 			});
 			$("#list-cleaners").click(function() {
 				$(".data").hide();	
 				$(".form").hide();
-				$("#cleaners").attr("class", "col-md-10 data");
+				$("#cleaners").attr("class", "col-md-8 data");
 				$("#cleaners").show();
 			});
 			$("#products-stock").click(function() {
 				$(".data").hide();	
 				$(".form").hide();
-				$("#stock").attr("class", "col-md-10 data");
+				$("#stock").attr("class", "col-md-8 data");
 				$("#stock").show();
 			});
 			$("#error").hide();

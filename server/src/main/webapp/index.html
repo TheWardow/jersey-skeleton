@@ -150,32 +150,18 @@
 							<th>Client</th>
 							<th>Fini</th>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td>1 Jan 2017</td>
-							<td>52 Rue du puit 59000 Lille</td>
-							<td>Jules Dystar</td>
-							<td>Oui</td>
-						</tr>
 					</table>
 				</div>
 
-				<div id="cleaners" class="col-md-4 data" style="background-color: #c6c6c6;">
+				<div id="cleaners" class="col-md-4 data">
 					<h4>Nettoyeurs</h4>
-					<table class="table">
+					<table class="table" id="table-cleaners">
 						<tr>
 							<th>Nom</th>
 							<th>Prenom</th>
 							<th>Disponible</th>
 							<th>Nb Commandes</th>
 							<th>Localisation</th>
-						</tr>
-						<tr>
-							<td>Vargas</td>
-							<td>Michel</td>
-							<td>Oui</td>
-							<td>10</td>
-							<td>Lille</td>
 						</tr>
 					</table>
 				</div>
@@ -187,22 +173,6 @@
 						<tr>
 							<th>Libellé</th>
 							<th>Quantité</th>
-						</tr>
-						<tr>
-							<td>Savon</td>
-							<td>200</td>
-						</tr>
-						<tr>
-							<td>Éponges</td>
-							<td>100</td>
-						</tr>
-						<tr>
-							<td>Raclettes</td>
-							<td>10</td>
-						</tr>
-						<tr>
-							<td>Savon</td>
-							<td>200</td>
 						</tr>
 					</table>
 				</div>
@@ -225,8 +195,7 @@
 				postAdminBdd($("#adminlogin").val(), $("#adminpasswd").val());
 			});
 			$("#simul").click(function() {
-				$("#login").hide();
-				$("#admin").show();
+				simulate();
 			});
 			$("#apply").click(function() {
 				$("#login").hide();

@@ -1,5 +1,6 @@
 package fr.iutinfo.skeleton.api;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.ws.rs.core.GenericType;
@@ -78,6 +79,27 @@ public class Helper {
         return user;
     }
     
+    
+    public static Car createCar(String userLogin, String marque, String modele, String couleur, String commentaire) {
+		Car car = new Car(userLogin, marque, modele, couleur, 0, commentaire);
+		int id = cardao.insert(car);
+		car.setId(id);
+		return car;
+	}
+    
+    public static Commande createCommande(int idCar, String loginCleaner) {
+		Commande commande = new Commande(0, idCar, loginCleaner);
+		int id = commandedao.insert(commande);
+		commande.setId(id);
+		return commande;
+	}
+    
+    public static Picture createPicture(int commandeId, String path, int nettoye) {
+		Picture picture = new Picture(commandeId, path, nettoye, LocalDateTime.now());
+		int id = picturedao.insert(picture);
+		picture.setId(id);
+		return picture;
+	}
 
 
     private static User createFullUSer(String nom, String prenom, String login, String email, String password, int isAdmin) {
@@ -104,4 +126,6 @@ public class Helper {
     static User createLinus() {
         return createFullUSer("Linus", "Torvalds", "linus", "linus@linux.org", "paswword", 0);
     }
+
+	
 }

@@ -8,15 +8,15 @@ import fr.iutinfo.skeleton.common.dto.CarDto;
 public class Car {
 	
 	final static Logger logger = LoggerFactory.getLogger(Car.class);
-    private int userId;
+    private String userLogin;
     private String marque;
     private String modele;
     private String couleur;
     private int id = 0;
     private String commentaire;
 
-    public Car(int userId, String marque, String modele, String couleur, int id, String commentaire) {
-		this.userId = userId;
+    public Car(String userLogin, String marque, String modele, String couleur, int id, String commentaire) {
+		this.userLogin = userLogin;
     	this.marque = marque;
 		this.modele = modele;
 		this.couleur = couleur;
@@ -29,13 +29,13 @@ public class Car {
     }
 
     
-    public int getUserId() {
-		return userId;
+    public String getUserlogin() {
+		return userLogin;
 	}
 
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserLogin(String userLogin) {
+		this.userLogin = userLogin;
 	}
 
 
@@ -103,15 +103,17 @@ public class Car {
         this.setId(dto.getId());
         this.setCouleur(dto.getCouleur());
         this.setCommentaire(dto.getCommentaire());
+        this.setUserLogin(dto.getUserlogin());
     }
 
     public CarDto convertToDto() {
         CarDto dto = new CarDto();
-        dto.setMarque(dto.getMarque());
-        dto.setModele(dto.getModele());
-        dto.setId(dto.getId());
-        dto.setCouleur(dto.getCouleur());
-        dto.setCommentaire(dto.getCommentaire());
+        dto.setMarque(this.getMarque());
+        dto.setModele(this.getModele());
+        dto.setId(this.getId());
+        dto.setCouleur(this.getCouleur());
+        dto.setCommentaire(this.getCommentaire());
+        dto.setUserlogin(this.getUserlogin());
         return dto;
     }
 }

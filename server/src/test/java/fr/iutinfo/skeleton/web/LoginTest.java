@@ -1,23 +1,21 @@
 package fr.iutinfo.skeleton.web;
 
-import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
-import static javax.ws.rs.core.Response.Status.TEMPORARY_REDIRECT;
-import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 import static org.junit.Assert.assertEquals;
 
 import javax.ws.rs.core.Application;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.Response;
 
-import org.glassfish.jersey.internal.util.Base64;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.iutinfo.skeleton.api.Car;
+import fr.iutinfo.skeleton.api.Cleaner;
+import fr.iutinfo.skeleton.api.Commande;
 import fr.iutinfo.skeleton.api.Helper;
+import fr.iutinfo.skeleton.api.Picture;
+import fr.iutinfo.skeleton.api.User;
 import fr.iutinfo.skeleton.api.UserDao;
 
 public class LoginTest extends JerseyTest {
@@ -35,15 +33,17 @@ public class LoginTest extends JerseyTest {
     @Before
     public void init() {
         h = new Helper();
-        h.initDb();
+        Helper.initDb();
     }
 
     @Test
     public void should_create_table() {
-    	h.createAdminWithPassword("admin", "admin");
-        h.createUserWithPassword("user", "user");
-        h.createCleanerWithPassword("cleaner", "cleaner");
-        
+    	User a = Helper.createAdminWithPassword("admin1", "admin");
+        User u = Helper.createUserWithPassword("user1", "user");
+        Cleaner c = Helper.createCleanerWithPassword("cleaner1", "cleaner");
+        Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","");
+        Commande com = Helper.createCommande(car.getId(), c.getLogin());
+        Picture pic = Helper.createPicture(c.getId(), "img/photo.jpg", 0);
         assertEquals(1, 1);
     }
     /*

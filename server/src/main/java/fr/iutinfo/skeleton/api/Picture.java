@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.PictureDto;
-import fr.iutinfo.skeleton.common.dto.UserDto;
 
 public class Picture {
     final static Logger logger = LoggerFactory.getLogger(Picture.class);
@@ -18,6 +17,13 @@ public class Picture {
 
     public Picture(int id) {
         this.id = id;
+    }
+    
+    public Picture(int commandeId, String path,int nettoye, LocalDateTime date) {
+        this.commandeid = commandeId;
+        this.path = path;
+        this.nettoye = nettoye;
+        this.date = date;
     }
 
     public Picture() {

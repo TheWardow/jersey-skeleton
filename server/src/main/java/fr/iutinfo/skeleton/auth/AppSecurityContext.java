@@ -1,11 +1,13 @@
 package fr.iutinfo.skeleton.auth;
 
-import fr.iutinfo.skeleton.api.User;
+import java.security.Principal;
+
+import javax.ws.rs.core.SecurityContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.core.SecurityContext;
-import java.security.Principal;
+import fr.iutinfo.skeleton.api.User;
 
 public class AppSecurityContext implements SecurityContext {
     final static Logger logger = LoggerFactory.getLogger(AppSecurityContext.class);

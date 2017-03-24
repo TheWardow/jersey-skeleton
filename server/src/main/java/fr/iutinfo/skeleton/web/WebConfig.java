@@ -1,13 +1,14 @@
 package fr.iutinfo.skeleton.web;
 
-import fr.iutinfo.skeleton.auth.AuthFilter;
+import javax.ws.rs.ApplicationPath;
+
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 import org.glassfish.jersey.server.TracingConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.glassfish.jersey.server.mvc.jsp.JspMvcFeature;
 
-import javax.ws.rs.ApplicationPath;
+import fr.iutinfo.skeleton.auth.AuthFilter;
 
 @ApplicationPath("html")
 public class WebConfig extends ResourceConfig {

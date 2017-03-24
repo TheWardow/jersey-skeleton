@@ -88,8 +88,8 @@
 			<ul class="nav navbar-nav">
 				<li id="deconnexion"><a href="/">Déconnexion</a></li>
 				<li id="general-view"><a>Vue Générale</a></li>
-				<li id="list-cleaners"><a>Nettoyeurs</a></li>
 				<li id="list-commands"><a>Commandes</a></li>
+				<li id="list-cleaners"><a>Nettoyeurs</a></li>
 				<li id="products-stock"><a>Stock de produits</a></li>
 				<li id="new-admin"><a>Ajouter un Admin</a></li>
 				<li id="new-cleaner"><a>Ajouter un Nettoyeur</a></li>
@@ -244,23 +244,27 @@
 			});
 
 			$("#general-view").click(function() {
+				$(".data").attr("class", "col-md-4 data");
 				$(".data").show();
 				$("#new-admin-form").hide();
 				$("#new-cleaner-form").hide();
 			});
 
 			$("#list-commands").click(function() {
-				$(".data").hide();
+				$(".data").hide();				
+				$("#commands").attr("class", "col-md-10 data");
 				$("#commands").show();
 			});
 
 			$("#list-cleaners").click(function() {
-				$(".data").hide();
+				$(".data").hide();				
+				$("#cleaners").attr("class", "col-md-10 data");
 				$("#cleaners").show();
 			});
 
 			$("#products-stock").click(function() {
-				$(".data").hide();
+				$(".data").hide();				
+				$("#stock").attr("class", "col-md-10 data");
 				$("#stock").show();
 			});
 

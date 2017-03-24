@@ -72,15 +72,17 @@ public class Helper {
         return user;
     }
     
-    public static Product createProduct(String type, String modele, String cleanerLogin){
-    	Product product = new Product(type, modele, cleanerLogin);
+    public static Product createProduct(String type, String modele, int quantite){
+    	Product product = new Product(type, modele, quantite);
     	int id = productdao.insert(product);
     	product.setId(id);
     	return product;
     }
     
-    public static Cleaner createCleanerWithPassword(String name, String passwd) {
-        Cleaner user = new Cleaner(0, name);
+    public static Cleaner createCleanerWithPassword(String login, String passwd, String nom, String prenom) {
+        Cleaner user = new Cleaner(0, login);
+        user.setNom(nom);
+        user.setPrenom(prenom);
         user.setSalt(user.getSalt());
         user.setPassword(passwd);
         logger.debug("createCleanerWithPassword Hash : " + user.getPasswdHash());

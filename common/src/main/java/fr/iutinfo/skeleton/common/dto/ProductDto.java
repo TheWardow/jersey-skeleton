@@ -9,7 +9,7 @@ public class ProductDto{
     private int id;
     private String marque;
     private String type;
-    private String cleanerLogin;
+    private int quantite;
     
 	public int getId() {
 		return id;
@@ -29,11 +29,11 @@ public class ProductDto{
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getCleanerLogin() {
-		return cleanerLogin;
+	public int getQuantite() {
+		return quantite;
 	}
-	public void setCleanerLogin(String cleanerLogin) {
-		this.cleanerLogin = cleanerLogin;
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
 	}
     
     

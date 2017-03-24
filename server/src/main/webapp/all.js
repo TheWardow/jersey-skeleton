@@ -36,6 +36,7 @@ function getSecure(url) {
 					$("#login").hide();
 					$("#admin").show();
 					getCleanersList();
+					getStockList();
 				}else{
 					console.log("connexion : err");
 					$("#error").show();
@@ -59,7 +60,6 @@ function getCleanersList(){
 		url: "v1/cleaner",
 		dataType: 'json',
 		beforeSend : function(req) {
-			req.setRequestHeader("Authorization", "Basic " + btoa($("#userlogin").val() + ":" + $("#passwdlogin").val()));
 		},
 		success: function (data) {
 			console.log("getCleanersList success");
@@ -86,20 +86,45 @@ function getStockList(){
 		url: "v1/produit",
 		dataType: 'json',
 		beforeSend : function(req) {
-			req.setRequestHeader("Authorization", "Basic " + btoa($("#userlogin").val() + ":" + $("#passwdlogin").val()));
 		},
 		success: function (data) {
-			console.log("getCleanersList success");
-			var table = $("#table-cleaners")
+			console.log("getStockList success");
+			var table = $("#table-stock")
 			
 			for(i=0; i<data.length; i++){
-				var ligne = "<tr><td>"+data[i].nom+"</td><td>"+data[i].prenom+"</td><td>"+data[i].disponible+"</td><td>"+data[i].nbCommandes+"</td><td>"+data[i].location+"</td></tr>";
-				$("#table-cleaners").append(ligne);
+				var ligne = "<tr><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
+				$("#table-stock").append(ligne);
 			}
 			
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert('error get cleaners list: ' + textStatus);
+			alert('error get stock list: ' + textStatus);
+			
+		}
+	});
+	
+}
+
+function getCommandList(){
+	$.ajax
+	({
+		type: "GET",
+		url: "v1/commande",
+		dataType: 'json',
+		beforeSend : function(req) {
+		},
+		success: function (data) {
+			console.log("getCommandList success");
+			var table = $("#table-cmd")
+			
+			for(i=0; i<data.length; i++){
+				var ligne = "<tr><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
+				$("#table-stock").append(ligne);
+			}
+			
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error get stock list: ' + textStatus);
 			
 		}
 	});
@@ -111,6 +136,8 @@ function simulate(){
 	$("#login").hide();
 	$("#admin").show();
 	getCleanersList();
+	getStockList();
+
 }
 
 function postUserBdd(login, pwd) {

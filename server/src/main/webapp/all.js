@@ -35,6 +35,7 @@ function getSecure(url) {
 					console.log("connexion :OK");
 					$("#login").hide();
 					$("#admin").show();
+					getCleanersList();
 				}else{
 					console.log("connexion : err");
 					$("#error").show();
@@ -51,9 +52,65 @@ function getSecure(url) {
 	}
 }
 
+function getCleanersList(){
+	$.ajax
+	({
+		type: "GET",
+		url: "v1/cleaner",
+		dataType: 'json',
+		beforeSend : function(req) {
+			req.setRequestHeader("Authorization", "Basic " + btoa($("#userlogin").val() + ":" + $("#passwdlogin").val()));
+		},
+		success: function (data) {
+			console.log("getCleanersList success");
+			var table = $("#table-cleaners")
+			
+			for(i=0; i<data.length; i++){
+				var ligne = "<tr><td>"+data[i].nom+"</td><td>"+data[i].prenom+"</td><td>"+data[i].disponible+"</td><td>"+data[i].nbCommandes+"</td><td>"+data[i].location+"</td></tr>";
+				$("#table-cleaners").append(ligne);
+			}
+			
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error get cleaners list: ' + textStatus);
+			
+		}
+	});
+	
+}
+
+function getStockList(){
+	$.ajax
+	({
+		type: "GET",
+		url: "v1/produit",
+		dataType: 'json',
+		beforeSend : function(req) {
+			req.setRequestHeader("Authorization", "Basic " + btoa($("#userlogin").val() + ":" + $("#passwdlogin").val()));
+		},
+		success: function (data) {
+			console.log("getCleanersList success");
+			var table = $("#table-cleaners")
+			
+			for(i=0; i<data.length; i++){
+				var ligne = "<tr><td>"+data[i].nom+"</td><td>"+data[i].prenom+"</td><td>"+data[i].disponible+"</td><td>"+data[i].nbCommandes+"</td><td>"+data[i].location+"</td></tr>";
+				$("#table-cleaners").append(ligne);
+			}
+			
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error get cleaners list: ' + textStatus);
+			
+		}
+	});
+	
+}
+
+
 function simulate(){
 	$("#login").hide();
 	$("#admin").show();
+	getCleanersList();
 }
 
 function postUserBdd(login, pwd) {

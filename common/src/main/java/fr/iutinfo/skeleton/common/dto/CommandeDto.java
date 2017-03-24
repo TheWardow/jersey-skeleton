@@ -60,6 +60,5 @@ public class CommandeDto{
 	public void setAccepte(boolean accepte) {
 		this.accepte = accepte;
 	}
-    
-    
+     
 }

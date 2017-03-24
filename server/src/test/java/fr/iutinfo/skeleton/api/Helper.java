@@ -78,6 +78,13 @@ public class Helper {
         return user;
     }
     
+    
+    public static Car createCar(String userLogin, String marque, String modele, String couleur, String commentaire) {
+		Car car = new Car(userLogin, marque, modele, couleur, 0, commentaire);
+		int id = cardao.insert(car);
+		car.setId(id);
+		return car;
+	}
 
 
     private static User createFullUSer(String nom, String prenom, String login, String email, String password, int isAdmin) {
@@ -104,4 +111,6 @@ public class Helper {
     static User createLinus() {
         return createFullUSer("Linus", "Torvalds", "linus", "linus@linux.org", "paswword", 0);
     }
+
+	
 }

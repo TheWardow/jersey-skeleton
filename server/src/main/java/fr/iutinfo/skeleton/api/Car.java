@@ -8,15 +8,15 @@ import fr.iutinfo.skeleton.common.dto.CarDto;
 public class Car {
 	
 	final static Logger logger = LoggerFactory.getLogger(Car.class);
-    private int userId;
+    private String userLogin;
     private String marque;
     private String modele;
     private String couleur;
     private int id = 0;
     private String commentaire;
 
-    public Car(int userId, String marque, String modele, String couleur, int id, String commentaire) {
-		this.userId = userId;
+    public Car(String userLogin, String marque, String modele, String couleur, int id, String commentaire) {
+		this.userLogin = userLogin;
     	this.marque = marque;
 		this.modele = modele;
 		this.couleur = couleur;
@@ -29,13 +29,13 @@ public class Car {
     }
 
     
-    public int getUserId() {
-		return userId;
+    public String getUserlogin() {
+		return userLogin;
 	}
 
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserLogin(String userLogin) {
+		this.userLogin = userLogin;
 	}
 
 

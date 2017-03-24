@@ -17,8 +17,12 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.iutinfo.skeleton.api.Car;
+import fr.iutinfo.skeleton.api.Cleaner;
 import fr.iutinfo.skeleton.api.Helper;
+import fr.iutinfo.skeleton.api.User;
 import fr.iutinfo.skeleton.api.UserDao;
+import fr.iutinfo.skeleton.common.dto.CleanerDto;
 
 public class LoginTest extends JerseyTest {
     final static Logger logger = LoggerFactory.getLogger(LoginTest.class);
@@ -35,14 +39,15 @@ public class LoginTest extends JerseyTest {
     @Before
     public void init() {
         h = new Helper();
-        h.initDb();
+        Helper.initDb();
     }
 
     @Test
     public void should_create_table() {
-    	h.createAdminWithPassword("admin", "admin");
-        h.createUserWithPassword("user", "user");
-        h.createCleanerWithPassword("cleaner", "cleaner");
+    	User a = Helper.createAdminWithPassword("admin", "admin");
+        User u = Helper.createUserWithPassword("user", "user");
+        Cleaner c = Helper.createCleanerWithPassword("cleaner", "cleaner");
+        Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","");
         
         assertEquals(1, 1);
     }

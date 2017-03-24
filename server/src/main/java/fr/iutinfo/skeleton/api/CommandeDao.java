@@ -1,10 +1,14 @@
 package fr.iutinfo.skeleton.api;
 
-import org.skife.jdbi.v2.sqlobject.*;
+import java.util.List;
+
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.BindBean;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
-
-import java.util.List;
 
 public interface CommandeDao {
     @SqlUpdate("create table commande (id integer primary key autoincrement, idcar integer, logincleaner integer, date datetime,duree integer,termine integer,accepte integer, foreign key(idcar) references car(id), foreign key(logincleaner) references cleaners(login))")

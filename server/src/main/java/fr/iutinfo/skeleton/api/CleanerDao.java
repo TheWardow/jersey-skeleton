@@ -1,10 +1,14 @@
 package fr.iutinfo.skeleton.api;
 
-import org.skife.jdbi.v2.sqlobject.*;
+import java.util.List;
+
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.BindBean;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
-
-import java.util.List;
 
 public interface CleanerDao {
     @SqlUpdate("create table cleaners (login varchar(20) primary key, passwdHash varchar(64), nom varchar(30), prenom varchar(30), tel varchar(12), email varchar(100), dob date, salt varchar(64),localisation varchar(200), note double, search varchar(1024))")

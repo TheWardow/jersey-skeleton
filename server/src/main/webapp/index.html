@@ -78,7 +78,7 @@
 							href="mailto:machin@gmail.com">machin@gmail.com</a>
 					</h4>
 				</div>
-				<div clas="col-md-2"></div>
+				<div class="col-md-2"></div>
 			</div>
 		</div>
 	</div>
@@ -87,35 +87,57 @@
 		<nav class="navbar navbar-default">
 			<ul class="nav navbar-nav">
 				<li id="deconnexion"><a href="/">Déconnexion</a></li>
+				<li id="general-view"><a>Vue Générale</a></li>
+				<li id="list-cleaners"><a>Nettoyeurs</a></li>
+				<li id="list-commands"><a>Commandes</a></li>
+				<li id="products-stock"><a>Stock de produits</a></li>
 				<li id="new-admin"><a>Ajouter un Admin</a></li>
-				<li id="new-cleaner"><a>Ajouter un Netoyeur</a></li>
+				<li id="new-cleaner"><a>Ajouter un Nettoyeur</a></li>
 			</ul>
 		</nav>
 
-		<div id="new-admin-form" style="display: none">
+		<div id="new-admin-form" class="data" style="display: none">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
+						<h4>Nouvel Admin</h4>
 						<input type="text" name="adminlogin" id="adminlogin"
 							placeholder="Login" class="form-control" /> <input
 							type="password" name="user" id="adminpasswd"
 							placeholder="Password" class="form-control" /> <br />
-						<button id="new-admin-form-btn" class="btn btn-default">Create Admin</button>
+						<button id="new-admin-form-btn" class="btn btn-default">Create
+							Admin</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="new-cleaner-form" class="data" style="display: none">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<h4>Nouveau Nettoyeur</h4>
+						<input type="text" name="cleanername" id="cleanername"
+							placeholder="Name" class="form-control" /> 
+						<input type="text" name="cleanersurname" id="cleanersurname"
+							placeholder="Surname" class="form-control" /> <br />
+						<button id="new-cleaner-form-btn" class="btn btn-default">Create
+							Cleaner</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
-
-		<div class="container" style="width: 100%;">
+		<div id="caisse" class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-md-4">
 					<h1>Administration</h1>
 				</div>
-
 			</div>
+
 			<div class="row">
-				<div class="col-md-4">
+
+				<div id="commands" class="col-md-4 data">
 					<h4>Commandes</h4>
 					<table class="table">
 						<tr>
@@ -134,7 +156,8 @@
 						</tr>
 					</table>
 				</div>
-				<div class="col-md-4" style="background-color: #e6e6e6;">
+
+				<div id="cleaners" class="col-md-4 data" style="background-color: #e6e6e6;">
 					<h4>Nettoyeurs</h4>
 					<table class="table">
 						<tr>
@@ -153,7 +176,9 @@
 						</tr>
 					</table>
 				</div>
-				<div class="col-md-4">
+
+
+				<div id="stock" class="col-md-4 data">
 					<h4>Stock</h4>
 					<table class="table">
 						<tr>
@@ -179,11 +204,12 @@
 					</table>
 				</div>
 
-
-
 			</div>
+
 		</div>
+
 	</div>
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#connexion").click(function() {
@@ -192,7 +218,7 @@
 			$("#new-user").click(function() {
 				postUserBdd($("#userlogin").val(), $("#passwdlogin").val());
 			});
-			
+
 			$("#new-admin-form-btn").click(function() {
 				postAdminBdd($("#adminlogin").val(), $("#adminpasswd").val());
 			});
@@ -208,11 +234,35 @@
 			});
 
 			$("#new-admin").click(function() {
-				$("#new-admin-form").show();
+				$("#new-admin-form").toggle();
+				$("#new-cleaner-form").hide();
 			});
 			
-			
-			
+			$("#new-cleaner").click(function() {
+				$("#new-cleaner-form").toggle();
+				$("#new-admin-form").hide();
+			});
+
+			$("#general-view").click(function() {
+				$(".data").show();
+				$("#new-admin-form").hide();
+				$("#new-cleaner-form").hide();
+			});
+
+			$("#list-commands").click(function() {
+				$(".data").hide();
+				$("#commands").show();
+			});
+
+			$("#list-cleaners").click(function() {
+				$(".data").hide();
+				$("#cleaners").show();
+			});
+
+			$("#products-stock").click(function() {
+				$(".data").hide();
+				$("#stock").show();
+			});
 
 			$("#error").hide();
 			$("#application").hide();

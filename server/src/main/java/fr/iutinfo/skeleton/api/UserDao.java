@@ -1,10 +1,14 @@
 package fr.iutinfo.skeleton.api;
 
-import org.skife.jdbi.v2.sqlobject.*;
+import java.util.List;
+
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.BindBean;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
-
-import java.util.List;
 
 public interface UserDao {
     @SqlUpdate("create table users (login varchar(20) primary key, passwdHash varchar(64), nom varchar(30), prenom varchar(30),isAdmin integer, tel varchar(12), email varchar(100), dob date, salt varchar(64), search varchar(1024))")

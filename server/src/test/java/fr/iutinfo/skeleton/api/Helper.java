@@ -43,6 +43,15 @@ public class Helper {
         return createUser(user);
     }
 
+    public static User createAdminWithPassword(String name, String passwd) {
+        User user = new User(0, name);
+        user.setSalt(user.getSalt());
+        user.setPassword(passwd);
+        user.setIsadmin(1);
+        logger.debug("createUserWithPassword Hash : " + user.getPasswdHash());
+        return createUser(user);
+    }
+    
     public static User createUserWithPassword(String name, String passwd) {
         User user = new User(0, name);
         user.setSalt(user.getSalt());
@@ -50,12 +59,25 @@ public class Helper {
         logger.debug("createUserWithPassword Hash : " + user.getPasswdHash());
         return createUser(user);
     }
-
     private static User createUser(User user) {
         int id = userdao.insert(user);
         user.setId(id);
         return user;
     }
+    
+    public static Cleaner createCleanerWithPassword(String name, String passwd) {
+        Cleaner user = new Cleaner(0, name);
+        user.setSalt(user.getSalt());
+        user.setPassword(passwd);
+        logger.debug("createCleanerWithPassword Hash : " + user.getPasswdHash());
+        return createCleaner(user);
+    }
+    private static Cleaner createCleaner(Cleaner user) {
+        int id = cleanerdao.insert(user);
+        user.setId(id);
+        return user;
+    }
+    
 
 
     private static User createFullUSer(String nom, String prenom, String login, String email, String password, int isAdmin) {

@@ -40,7 +40,10 @@ public class LoginTest extends JerseyTest {
 
     @Test
     public void should_create_table() {
-        h.createUserWithPassword("admin", "admin");
+    	h.createAdminWithPassword("admin", "admin");
+        h.createUserWithPassword("user", "user");
+        h.createCleanerWithPassword("cleaner", "cleaner");
+        
         assertEquals(1, 1);
     }
     /*

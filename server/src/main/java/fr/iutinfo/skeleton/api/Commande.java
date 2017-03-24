@@ -15,15 +15,14 @@ public class Commande{
     private LocalDateTime date;
     private boolean termine;
     private int idcar;
-    private int idcleaner;
-    private int idpicture;
+    private String logincleaner;
     private int duree; // Minutes
     private boolean accepte;
     
-    public Commande(int id, int idCar, int idNettoyeur){
+    public Commande(int id, int idCar, String loginCleaner){
     	this.id = id;
     	this.idcar = idCar;
-    	this.idcleaner = idNettoyeur;
+    	this.logincleaner = loginCleaner;
     }
     
     public Commande(){
@@ -62,20 +61,21 @@ public class Commande{
 		this.idcar = idCar;
 	}
 
-	public int getIdCleaner() {
-		return idcleaner;
+
+	public int getIdcar() {
+		return idcar;
 	}
 
-	public void setIdCleaner(int idCleaner) {
-		this.idcleaner = idCleaner;
+	public String getLogincleaner() {
+		return logincleaner;
 	}
 
-	public int getIdPicture() {
-		return idpicture;
+	public void setIdcar(int idcar) {
+		this.idcar = idcar;
 	}
 
-	public void setIdPicture(int idPicture) {
-		this.idpicture = idPicture;
+	public void setLogincleaner(String logincleaner) {
+		this.logincleaner = logincleaner;
 	}
 
 	public int getDuree() {
@@ -95,9 +95,8 @@ public class Commande{
 	}
     
 	public void initFromDto(CommandeDto dto) {
-        this.setIdCleaner(dto.getIdCleaner());
+        this.setLogincleaner(dto.getLoginCleaner());
         this.setIdCar(dto.getIdCar());
-        this.setIdPicture(dto.getIdPicture());
         this.setAccepte(dto.isAccepte());
         this.setTermine(dto.isTermine());
         this.setDate(dto.getDate());
@@ -106,9 +105,8 @@ public class Commande{
 
     public CommandeDto convertToDto() {
         CommandeDto dto = new CommandeDto();
-        dto.setIdCleaner(this.getIdCleaner());
+        dto.setLoginCleaner(this.getLogincleaner());
         dto.setIdCar(this.getIdCar());
-        dto.setIdPicture(this.getIdPicture());
         dto.setAccepte(this.isAccepte()); 
         dto.setTermine(this.isTermine());
         dto.setDate(this.getDate());

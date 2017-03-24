@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import fr.iutinfo.skeleton.common.dto.UserDto;
+import fr.iutinfo.skeleton.common.remote.UsersProvider;
 
 public class Main {
 

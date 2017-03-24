@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.AdresseDto;
 
-@Path("/user")
+@Path("/adresse")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AdresseResource {

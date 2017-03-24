@@ -1,23 +1,16 @@
 package fr.iutinfo.skeleton.web;
 
-import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
-import static javax.ws.rs.core.Response.Status.TEMPORARY_REDIRECT;
-import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 import static org.junit.Assert.assertEquals;
 
 import javax.ws.rs.core.Application;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.Response;
 
-import org.eclipse.persistence.sessions.coordination.Command;
-import org.glassfish.jersey.internal.util.Base64;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.iutinfo.skeleton.api.Adresse;
 import fr.iutinfo.skeleton.api.Car;
 import fr.iutinfo.skeleton.api.Cleaner;
 import fr.iutinfo.skeleton.api.Commande;
@@ -25,7 +18,6 @@ import fr.iutinfo.skeleton.api.Helper;
 import fr.iutinfo.skeleton.api.Picture;
 import fr.iutinfo.skeleton.api.User;
 import fr.iutinfo.skeleton.api.UserDao;
-import fr.iutinfo.skeleton.common.dto.CleanerDto;
 
 public class LoginTest extends JerseyTest {
     final static Logger logger = LoggerFactory.getLogger(LoginTest.class);
@@ -53,6 +45,7 @@ public class LoginTest extends JerseyTest {
         Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","");
         Commande com = Helper.createCommande(car.getId(), c.getLogin());
         Picture pic = Helper.createPicture(c.getId(), "img/photo.jpg", 0);
+        Adresse adresse = Helper.createAdresse("10B", "rue Simone de Beauvoir", "Loos", 59120, u.getLogin());
         assertEquals(1, 1);
     }
     /*

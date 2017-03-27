@@ -155,7 +155,7 @@ public class User implements Principal {
         if (getClass() != arg.getClass())
             return false;
         User user = (User) arg;
-        return login.equals(user.login) && email.equals(user.email) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
+        return login.equals(user.login) && email.equals(user.email) && passwdHash.equals(user.getPasswdHash());
     }
 
     @Override

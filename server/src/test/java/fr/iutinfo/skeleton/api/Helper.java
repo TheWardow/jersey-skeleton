@@ -63,9 +63,20 @@ public class Helper {
         User user = new User(0, name);
         user.setSalt(user.getSalt());
         user.setPassword(passwd);
+        System.out.println("cle : "+user.getPasswdHash());
         logger.debug("createUserWithPassword Hash : " + user.getPasswdHash());
         return createUser(user);
     }
+    
+    public static User createUserWithPassword(String name, String passwd,String salt) {
+        User user = new User(0, name);
+        user.setSalt(salt);
+        user.setPassword(passwd);
+        System.out.println("cle : "+user.getPasswdHash());
+        logger.debug("createUserWithPassword Hash : " + user.getPasswdHash());
+        return createUser(user);
+    }
+    
     private static User createUser(User user) {
         int id = userdao.insert(user);
         user.setId(id);
@@ -148,6 +159,9 @@ public class Helper {
     static User createLinus() {
         return createFullUSer("Linus", "Torvalds", "linus", "linus@linux.org", "paswword", 0);
     }
-
+    
+    static User createIan() {
+        return createFullUSer("Ian","Murdock", "debian", "ian@debian.org", "mot de passe", 0);
+    }
 	
 }

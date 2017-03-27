@@ -30,7 +30,7 @@ public interface UserDao {
     void dropUserTable();
 
     @SqlUpdate("delete from users where login = :login")
-    void delete(@Bind("login") int login);
+    void delete(@Bind("login") String login);
 
     @SqlQuery("select * from users order by login")
     @RegisterMapperFactory(BeanMapperFactory.class)

@@ -71,9 +71,9 @@ public class UserResource {
     }
 
     @DELETE
-    @Path("/{id}")
-    public void deleteUser(@PathParam("id") int id) {
-        dao.delete(id);
+    @Path("/{login}")
+    public void deleteUser(@PathParam("login") String login) {
+        dao.delete(login);
     }
 
 }

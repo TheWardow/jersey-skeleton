@@ -55,6 +55,7 @@ function getSecure(url) {
 }
 
 function getCleanersList(){
+
 	$.ajax
 	({
 		type: "GET",
@@ -120,6 +121,7 @@ function getCommandList(){
 			var table = $("#table-cmd")
 
 			for(i=0; i<data.length; i++){
+				console.log("commandlist : new line, nb lines = " + data.length)
 				var carData = getCarInfo(data[i].idCar);
 				var ligne = "<tr><td>"+data[i].id+"</td><td>"+data[i].date+"</td><td>"+data[i].adresse+"</td><td>"+carData.immatriculation+"</td><td>"+"voiture n°" +data[i].idCar+"</td><td>"+data[i].termine+"</td></tr>";
 				$("#table-cmd").append(ligne);
@@ -146,11 +148,11 @@ function getCarInfo(id){
 		success:function (data) {
 			console.log("getCarData " + id + " success");
 			carData = data;
-			
+
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('error get car data : ' + id+" " + textStatus);
-			
+
 		}
 	});
 	return carData;
@@ -228,7 +230,7 @@ function postAdminBdd(login, pwd) {
 	});
 }
 
-function postCleanerBdd(name, surname, tel, town) {
+function postCleanerBdd(login,password, email, nom, prenom, tel) {
 	console.log("postCleanerBdd " + "v1/cleaner/" );
 	$.ajax({
 		type : 'POST',
@@ -237,14 +239,14 @@ function postCleanerBdd(name, surname, tel, town) {
 		dataType : "json",
 		data : JSON.stringify({
 			"id" : 0,
-			"nom" : name,
-			"prenom" : surname,
+			"nom" : nom,
+			"prenom" : prenom,
 			"tel" : tel,
 			"dob" : new Date(),
-			"email" : "",
-			"login" : "",
-			"password" : "",
-			"localisation" : town,
+			"email" : email,
+			"login" : login,
+			"password" : password,
+			"localisation" : "",
 			"note" : 0
 		}),
 		success : function(data, textStatus, jqXHR) {

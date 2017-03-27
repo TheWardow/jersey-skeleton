@@ -48,15 +48,6 @@ public class ProductResource{
         return dto;
     }
 
-    @GET
-    @Path("/{id}")
-    public ProductDto getProduct(@PathParam("id") int id) {
-        Product produit = dao.findById(id);
-        if (produit == null) {
-            throw new WebApplicationException(404);
-        }
-        return produit.convertToDto();
-    }
 
     @GET
     public List<ProductDto> getAllProduct() {

@@ -9,8 +9,17 @@ public class ProductDto{
     private int id;
     private String marque;
     private String type;
+    private String cleanerlogin;
     private int quantite;
     
+    
+    
+	public String getCleanerlogin() {
+		return cleanerlogin;
+	}
+	public void setCleanerlogin(String cleanerLogin) {
+		this.cleanerlogin = cleanerLogin;
+	}
 	public int getId() {
 		return id;
 	}

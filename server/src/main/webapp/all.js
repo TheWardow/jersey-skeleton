@@ -94,7 +94,7 @@ function getStockList(){
 			var table = $("#table-stock")
 
 			for(i=0; i<data.length; i++){
-				var ligne = "<tr><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
+				var ligne = "<tr><td>"+data[i].cleanerlogin+"</td><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
 				$("#table-stock").append(ligne);
 			}
 

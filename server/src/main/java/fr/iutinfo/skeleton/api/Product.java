@@ -11,17 +11,26 @@ public class Product{
     private int id;
     private String type;
     private String marque;
+    private String cleanerlogin;
     private int quantite;
     
-    public Product(String type, String modele, int quantite) {
+    public Product(String type, String modele, int quantite, String cleanerlogin) {
 		this.type = type;
 		this.marque = modele;
 		this.quantite = quantite;
+		this.cleanerlogin = cleanerlogin;
 	}
     
     public Product(){
     	
     }
+    
+    public String getCleanerlogin() {
+		return cleanerlogin;
+	}
+	public void setCleanerlogin(String cleanerLogin) {
+		this.cleanerlogin = cleanerLogin;
+	}
 
 	public int getId() {
 		return id;
@@ -60,6 +69,7 @@ public class Product{
         this.setMarque(dto.getMarque());
         this.setType(dto.getType());
         this.setId(dto.getId());
+        this.setCleanerlogin(dto.getCleanerlogin());
     }
 
     public ProductDto convertToDto() {
@@ -68,6 +78,7 @@ public class Product{
         dto.setMarque(this.getMarque());
         dto.setType(this.getType());
         dto.setId(this.getId());
+        dto.setCleanerlogin(this.getCleanerlogin());
         return dto;
     }
 

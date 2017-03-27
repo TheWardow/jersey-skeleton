@@ -39,6 +39,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<h1>Administration :</h1>
+					
 
 				</div>
 				<div class="col-md-6">
@@ -147,14 +148,19 @@
 
 		<div id="caisse" class="container" style="width: 100%;">
 			<div class="row">
-				<div id="titre" class="col-md-4">
+				<div id="titre" class="col-md-2">
 					<h1>Administration</h1>
+					
 				</div>
+<!-- 				<div class="col-md-1"> -->
+<!-- 					<h5><a id="refresh" style="color:white" >Refresh</a></h5> -->
+					
+<!-- 				</div> -->
 			</div>
 
 			<div class="row">
 
-				<div id="commands" class="col-md-4 data" style="background-color: rgba(220, 220, 220, 0.65)">
+				<div id="commands" class="col-md-5 data" style="background-color: rgba(220, 220, 220, 0.65)">
 					<h4>Commandes</h4>
 					<table class="table" id="table-cmd">
 						<tr>
@@ -163,6 +169,7 @@
 							<th>Adresse</th>
 							<th>Immatriculation</th>
 							<th>Client</th>
+							<th>Accepté</th>
 							<th>Fini</th>
 						</tr>
 					</table>
@@ -182,7 +189,7 @@
 				</div>
 
 
-				<div id="stock" class="col-md-4 data" style="background-color: rgba(220, 220, 220, 0.65)">
+				<div id="stock" class="col-md-3 data" style="background-color: rgba(220, 220, 220, 0.65)">
 					<h4>Stock</h4>
 					<table class="table" id="table-stock">
 						<tr>
@@ -241,7 +248,9 @@
 						$("#new-admin-form").hide();
 					});
 					$("#general-view").click(function() {
-						$(".data").attr("class", "col-md-4 data");
+						$("#commands").attr("class", "col-md-5 data");
+						$("#cleaners").attr("class", "col-md-4 data");
+						$("#stock").attr("class", "col-md-3 data");
 						$("#titre").attr("class", "col-md-4");
 						$(".data").show();
 						$(".form").hide();
@@ -267,6 +276,7 @@
 						$("#stock").attr("class", "col-md-6 col-lg-offset-3 data");
 						$("#stock").show();
 					});
+					$("#refresh").click(function() { simulate()});
 					$("#error").hide();
 					$("#application").hide();
 				});

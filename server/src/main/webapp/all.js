@@ -123,7 +123,7 @@ function getCommandList(){
 			for(i=0; i<data.length; i++){
 				console.log("commandlist : new line, nb lines = " + data.length)
 				var carData = getCarInfo(data[i].idCar);
-				var ligne = "<tr><td>"+data[i].id+"</td><td>"+data[i].date+"</td><td>"+data[i].adresse+"</td><td>"+carData.immatriculation+"</td><td>"+"voiture n°" +data[i].idCar+"</td><td>"+data[i].termine+"</td></tr>";
+				var ligne = "<tr><td>"+data[i].id+"</td><td>"+data[i].date+"</td><td>"+data[i].adresse+"</td><td>"+carData.immatriculation+"</td><td>"+"voiture n°" +data[i].idCar+"</td><td>"+data[i].accepte+"</td><td>"+data[i].termine+"</td></tr>";
 				$("#table-cmd").append(ligne);
 			}
 

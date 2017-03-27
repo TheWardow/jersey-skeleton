@@ -44,6 +44,7 @@ public class UserResource {
         user.initFromDto(dto);
         user.resetPasswordHash();
         int id = dao.insert(user);
+        System.out.println(dto.getNom());
         dto.setId(id);
         return dto;
     }

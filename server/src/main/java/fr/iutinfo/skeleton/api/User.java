@@ -208,6 +208,10 @@ public class User implements Principal {
 
     public void initFromDto(UserDto dto) {
         this.setEmail(dto.getEmail());
+        this.setNom(dto.getNom());
+        this.setPrenom(dto.getPrenom());
+        this.setTel(dto.getTel());
+        //this.setDob(dto.getDob());
         this.setId(dto.getId());
         this.setLogin(dto.getLogin());
         this.setPassword(dto.getPassword());
@@ -217,6 +221,9 @@ public class User implements Principal {
 
     public UserDto convertToDto() {
         UserDto dto = new UserDto();
+        dto.setPrenom(this.getPrenom());
+        dto.setNom(this.getNom());
+        dto.setTel(this.getTel());
         dto.setEmail(this.getEmail());
         dto.setId(this.getId());
         dto.setLogin(this.getLogin());

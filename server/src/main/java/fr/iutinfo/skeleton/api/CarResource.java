@@ -51,12 +51,12 @@ public class CarResource {
     
     @GET
     @Path("/{name}")
-    public CarDto getCar(@PathParam("name") int id) {
-    	Car Car = dao.findById(id);
-        if (Car == null) {
+    public List<CarDto> getCarByLogin(@PathParam("name") String login) {
+    	List<Car> car = dao.findByLogin(login);
+        if (car == null) {
             throw new WebApplicationException(404);
         }
-        return Car.convertToDto();
+        return car.stream().map(Car::convertToDto).collect(Collectors.toList());
     }
     
     @GET

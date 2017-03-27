@@ -83,8 +83,8 @@ public class Helper {
         return user;
     }
     
-    public static Product createProduct(String type, String modele, int quantite){
-    	Product product = new Product(type, modele, quantite);
+    public static Product createProduct(String type, String modele, int quantite, String cleanerlogin){
+    	Product product = new Product(type, modele, quantite, cleanerlogin);
     	int id = productdao.insert(product);
     	product.setId(id);
     	return product;

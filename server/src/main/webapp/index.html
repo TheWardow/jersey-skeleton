@@ -39,6 +39,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<h1>Administration :</h1>
+					
 
 				</div>
 				<div class="col-md-6">
@@ -106,7 +107,7 @@
 		<div id="new-admin-form" class="form" style="display: none">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4 col-lg-offset-4">
 						<h4>Nouvel Admin</h4>
 						<input type="text" name="adminlogin" id="adminlogin"
 							placeholder="Login" class="form-control" />
@@ -123,11 +124,11 @@
 		<div id="new-cleaner-form" class="form" style="display: none">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4 col-lg-offset-4">
 						<h4>Nouveau Nettoyeur</h4>
 						<input type="text" name="cleanerlogin" id="cleanerlogin"
 							placeholder="Login" class="form-control" />
-						<input type="text" name="cleanerpassword" id="cleanerpassword"
+						<input type="password" name="cleanerpassword" id="cleanerpassword"
 							placeholder="Mot de passe" class="form-control" />
 						<input type="text" name="cleanerprenom" id="cleanerprenom"
 							placeholder="Prenom" class="form-control" />
@@ -147,14 +148,19 @@
 
 		<div id="caisse" class="container" style="width: 100%;">
 			<div class="row">
-				<div class="col-md-4">
+				<div id="titre" class="col-md-2">
 					<h1>Administration</h1>
+					
 				</div>
+<!-- 				<div class="col-md-1"> -->
+<!-- 					<h5><a id="refresh" style="color:white" >Refresh</a></h5> -->
+					
+<!-- 				</div> -->
 			</div>
 
 			<div class="row">
 
-				<div id="commands" class="col-md-4 data">
+				<div id="commands" class="col-md-5 data" style="background-color: rgba(220, 220, 220, 0.65)">
 					<h4>Commandes</h4>
 					<table class="table" id="table-cmd">
 						<tr>
@@ -163,29 +169,31 @@
 							<th>Adresse</th>
 							<th>Immatriculation</th>
 							<th>Client</th>
+							<th>Envoyé à</th>
+							<th>Accepté</th>
 							<th>Fini</th>
 						</tr>
 					</table>
 				</div>
 
-				<div id="cleaners" class="col-md-4 data">
+				<div id="cleaners" class="col-md-4 data" style="background-color: rgba(220, 220, 220, 0.65)">
 					<h4>Nettoyeurs</h4>
 					<table class="table" id="table-cleaners">
 						<tr>
+							<th>Login</th>
 							<th>Nom</th>
 							<th>Prenom</th>
-							<th>Disponible</th>
-							<th>Nb Commandes</th>
 							<th>Localisation</th>
 						</tr>
 					</table>
 				</div>
 
 
-				<div id="stock" class="col-md-4 data">
+				<div id="stock" class="col-md-3 data" style="background-color: rgba(220, 220, 220, 0.65)">
 					<h4>Stock</h4>
 					<table class="table" id="table-stock">
 						<tr>
+							<th>Nettoyeur</th>
 							<th>Type</th>
 							<th>Marque</th>
 							<th>Quantité</th>
@@ -241,28 +249,35 @@
 						$("#new-admin-form").hide();
 					});
 					$("#general-view").click(function() {
-						$(".data").attr("class", "col-md-4 data");
+						$("#commands").attr("class", "col-md-5 data");
+						$("#cleaners").attr("class", "col-md-4 data");
+						$("#stock").attr("class", "col-md-3 data");
+						$("#titre").attr("class", "col-md-4");
 						$(".data").show();
 						$(".form").hide();
 					});
 					$("#list-commands").click(function() {
 						$(".data").hide();
 						$(".form").hide();
-						$("#commands").attr("class", "col-md-8 data");
+						$("#titre").attr("class", "col-md-4 col-lg-offset-2");
+						$("#commands").attr("class", "col-md-8 col-lg-offset-2 data");
 						$("#commands").show();
 					});
 					$("#list-cleaners").click(function() {
 						$(".data").hide();
 						$(".form").hide();
-						$("#cleaners").attr("class", "col-md-8 data");
+						$("#titre").attr("class", "col-md-4 col-lg-offset-1");
+						$("#cleaners").attr("class", "col-md-10 col-lg-offset-1 data");
 						$("#cleaners").show();
 					});
 					$("#products-stock").click(function() {
 						$(".data").hide();
 						$(".form").hide();
-						$("#stock").attr("class", "col-md-8 data");
+						$("#titre").attr("class", "col-md-4 col-lg-offset-3");
+						$("#stock").attr("class", "col-md-6 col-lg-offset-3 data");
 						$("#stock").show();
 					});
+					$("#refresh").click(function() { simulate()});
 					$("#error").hide();
 					$("#application").hide();
 				});

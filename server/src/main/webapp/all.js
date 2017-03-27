@@ -68,7 +68,7 @@ function getCleanersList(){
 			var table = $("#table-cleaners")
 
 			for(i=0; i<data.length; i++){
-				var ligne = "<tr><td>"+data[i].nom+"</td><td>"+data[i].prenom+"</td><td>"+data[i].disponible+"</td><td>"+data[i].nbCommandes+"</td><td>"+data[i].location+"</td></tr>";
+				var ligne = "<tr><td>"+data[i].login+"</td><td>"+data[i].nom+"</td><td>"+data[i].prenom+"</td><td>"+data[i].location+"</td></tr>";
 				$("#table-cleaners").append(ligne);
 			}
 
@@ -94,7 +94,7 @@ function getStockList(){
 			var table = $("#table-stock")
 
 			for(i=0; i<data.length; i++){
-				var ligne = "<tr><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
+				var ligne = "<tr><td>"+data[i].cleanerlogin+"</td><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
 				$("#table-stock").append(ligne);
 			}
 
@@ -123,7 +123,7 @@ function getCommandList(){
 			for(i=0; i<data.length; i++){
 				console.log("commandlist : new line, nb lines = " + data.length)
 				var carData = getCarInfo(data[i].idCar);
-				var ligne = "<tr><td>"+data[i].id+"</td><td>"+data[i].date+"</td><td>"+data[i].adresse+"</td><td>"+carData.immatriculation+"</td><td>"+"voiture n°" +data[i].idCar+"</td><td>"+data[i].termine+"</td></tr>";
+				var ligne = "<tr><td>"+data[i].id+"</td><td>"+data[i].date+"</td><td>"+data[i].adresse+"</td><td>"+carData.immatriculation+"</td><td>"+"voiture n°" +data[i].idCar+"</td><td>"+data[i].loginCleaner+"</td><td>"+data[i].accepte+"</td><td>"+data[i].termine+"</td></tr>";
 				$("#table-cmd").append(ligne);
 			}
 

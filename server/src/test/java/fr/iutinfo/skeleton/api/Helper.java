@@ -18,6 +18,7 @@ public class Helper {
     private static final PictureDao picturedao = BDDFactory.getDbi().open(PictureDao.class);
     private static final CommandeDao commandedao = BDDFactory.getDbi().open(CommandeDao.class);
     private static final AdresseDao adressedao = BDDFactory.getDbi().open(AdresseDao.class);
+    private static final ProductDao productdao = BDDFactory.getDbi().open(ProductDao.class);
     static GenericType<List<UserDto>> listUserResponseType = new GenericType<List<UserDto>>() {
     };
 
@@ -34,6 +35,8 @@ public class Helper {
     	commandedao.createCommandeTable();
     	adressedao.dropAdresseTable();
     	adressedao.createAdresseTable();
+    	productdao.dropProductTable();
+    	productdao.createProductTable();
     }
 
     static User createUserWithName(String name) {
@@ -69,8 +72,17 @@ public class Helper {
         return user;
     }
     
-    public static Cleaner createCleanerWithPassword(String name, String passwd) {
-        Cleaner user = new Cleaner(0, name);
+    public static Product createProduct(String type, String modele, int quantite){
+    	Product product = new Product(type, modele, quantite);
+    	int id = productdao.insert(product);
+    	product.setId(id);
+    	return product;
+    }
+    
+    public static Cleaner createCleanerWithPassword(String login, String passwd, String nom, String prenom) {
+        Cleaner user = new Cleaner(0, login);
+        user.setNom(nom);
+        user.setPrenom(prenom);
         user.setSalt(user.getSalt());
         user.setPassword(passwd);
         logger.debug("createCleanerWithPassword Hash : " + user.getPasswdHash());
@@ -89,8 +101,8 @@ public class Helper {
         return adresse;
     }
     
-    public static Car createCar(String userLogin, String marque, String modele, String couleur, String commentaire) {
-		Car car = new Car(userLogin, marque, modele, couleur, 0, commentaire);
+    public static Car createCar(String userLogin, String marque, String modele, String couleur, String commentaire, String immatriculation) {
+		Car car = new Car(userLogin, marque, modele, couleur, 0, commentaire,immatriculation);
 		int id = cardao.insert(car);
 		car.setId(id);
 		return car;
@@ -98,6 +110,7 @@ public class Helper {
     
     public static Commande createCommande(int idCar, String loginCleaner) {
 		Commande commande = new Commande(0, idCar, loginCleaner);
+		//commande.setDate(LocalDateTime.now());
 		int id = commandedao.insert(commande);
 		commande.setId(id);
 		return commande;

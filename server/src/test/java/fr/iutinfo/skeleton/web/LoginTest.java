@@ -16,6 +16,7 @@ import fr.iutinfo.skeleton.api.Cleaner;
 import fr.iutinfo.skeleton.api.Commande;
 import fr.iutinfo.skeleton.api.Helper;
 import fr.iutinfo.skeleton.api.Picture;
+import fr.iutinfo.skeleton.api.Product;
 import fr.iutinfo.skeleton.api.User;
 import fr.iutinfo.skeleton.api.UserDao;
 
@@ -41,11 +42,12 @@ public class LoginTest extends JerseyTest {
     public void should_create_table() {
     	User a = Helper.createAdminWithPassword("admin1", "admin");
         User u = Helper.createUserWithPassword("user1", "user");
-        Cleaner c = Helper.createCleanerWithPassword("cleaner1", "cleaner");
-        Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","");
+        Cleaner c = Helper.createCleanerWithPassword("cleaner1", "cleaner", "Tahiti", "Bob");
+        Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","","154 AFD 59");
         Commande com = Helper.createCommande(car.getId(), c.getLogin());
         Picture pic = Helper.createPicture(c.getId(), "img/photo.jpg", 0);
         Adresse adresse = Helper.createAdresse("10B", "rue Simone de Beauvoir", "Loos", 59120, u.getLogin());
+        Product product = Helper.createProduct("savon", "Mr Propre", 20);
         assertEquals(1, 1);
     }
     /*

@@ -8,20 +8,22 @@ import fr.iutinfo.skeleton.common.dto.CarDto;
 public class Car {
 	
 	final static Logger logger = LoggerFactory.getLogger(Car.class);
-    private String userLogin;
+    private String userlogin;
     private String marque;
     private String modele;
     private String couleur;
     private int id = 0;
     private String commentaire;
+    private String immatriculation;
 
-    public Car(String userLogin, String marque, String modele, String couleur, int id, String commentaire) {
-		this.userLogin = userLogin;
+    public Car(String userLogin, String marque, String modele, String couleur, int id, String commentaire, String immatriculation) {
+		this.userlogin = userLogin;
     	this.marque = marque;
 		this.modele = modele;
 		this.couleur = couleur;
 		this.id = id;
 		this.commentaire = commentaire;
+		this.immatriculation = immatriculation;
 	}
 
 
@@ -29,13 +31,23 @@ public class Car {
     }
 
     
-    public String getUserlogin() {
-		return userLogin;
+    public String getImmatriculation() {
+		return immatriculation;
 	}
 
 
-	public void setUserLogin(String userLogin) {
-		this.userLogin = userLogin;
+	public void setImmatriculation(String immatriculation) {
+		this.immatriculation = immatriculation;
+	}
+
+
+	public String getUserlogin() {
+		return userlogin;
+	}
+
+
+	public void setUserlogin(String userlogin) {
+		this.userlogin = userlogin;
 	}
 
 
@@ -103,7 +115,8 @@ public class Car {
         this.setId(dto.getId());
         this.setCouleur(dto.getCouleur());
         this.setCommentaire(dto.getCommentaire());
-        this.setUserLogin(dto.getUserlogin());
+        this.setUserlogin(dto.getUserlogin());
+        this.setImmatriculation(dto.getImmatriculation());
     }
 
     public CarDto convertToDto() {
@@ -114,6 +127,7 @@ public class Car {
         dto.setCouleur(this.getCouleur());
         dto.setCommentaire(this.getCommentaire());
         dto.setUserlogin(this.getUserlogin());
+        dto.setImmatriculation(this.getImmatriculation());
         return dto;
     }
 }

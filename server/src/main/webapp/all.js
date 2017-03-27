@@ -31,10 +31,13 @@ function getSecure(url) {
 			},
 			success: function (data) {
 				console.log(data);
-				if(data.id != -1){
+				if(data.id != -1 && data.isadmin == 1){
 					console.log("connexion :OK");
 					$("#login").hide();
 					$("#admin").show();
+					getCleanersList();
+					getStockList();
+					getCommandList();
 				}else{
 					console.log("connexion : err");
 					$("#error").show();
@@ -51,9 +54,118 @@ function getSecure(url) {
 	}
 }
 
+function getCleanersList(){
+
+	$.ajax
+	({
+		type: "GET",
+		url: "v1/cleaner",
+		dataType: 'json',
+		beforeSend : function(req) {
+		},
+		success: function (data) {
+			console.log("getCleanersList success");
+			var table = $("#table-cleaners")
+
+			for(i=0; i<data.length; i++){
+				var ligne = "<tr><td>"+data[i].nom+"</td><td>"+data[i].prenom+"</td><td>"+data[i].disponible+"</td><td>"+data[i].nbCommandes+"</td><td>"+data[i].location+"</td></tr>";
+				$("#table-cleaners").append(ligne);
+			}
+
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error get cleaners list: ' + textStatus);
+
+		}
+	});
+
+}
+
+function getStockList(){
+	$.ajax
+	({
+		type: "GET",
+		url: "v1/produit",
+		dataType: 'json',
+		beforeSend : function(req) {
+		},
+		success: function (data) {
+			console.log("getStockList success");
+			var table = $("#table-stock")
+
+			for(i=0; i<data.length; i++){
+				var ligne = "<tr><td>"+data[i].type+"</td><td>"+data[i].marque+"</td><td>"+data[i].quantite+"</td></tr>";
+				$("#table-stock").append(ligne);
+			}
+
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error get stock list: ' + textStatus);
+
+		}
+	});
+
+}
+
+function getCommandList(){
+	$.ajax
+	({
+		type: "GET",
+		url: "v1/commande",
+		dataType: 'json',
+		beforeSend : function(req) {
+		},
+		success: function (data) {
+			console.log("getCommandList success");
+			console.log(data);
+			var table = $("#table-cmd")
+
+			for(i=0; i<data.length; i++){
+				console.log("commandlist : new line, nb lines = " + data.length)
+				var carData = getCarInfo(data[i].idCar);
+				var ligne = "<tr><td>"+data[i].id+"</td><td>"+data[i].date+"</td><td>"+data[i].adresse+"</td><td>"+carData.immatriculation+"</td><td>"+"voiture n°" +data[i].idCar+"</td><td>"+data[i].termine+"</td></tr>";
+				$("#table-cmd").append(ligne);
+			}
+
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error get stock list: ' + textStatus);
+
+		}
+	});
+
+}
+function getCarInfo(id){
+	var carData;
+	$.ajax
+	({
+		async: false,
+		type: "GET",
+		url: "v1/car/"+id,
+		dataType: 'json',
+		beforeSend : function(req) {
+		},
+		success:function (data) {
+			console.log("getCarData " + id + " success");
+			carData = data;
+
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error get car data : ' + id+" " + textStatus);
+
+		}
+	});
+	return carData;
+}
+
+
 function simulate(){
 	$("#login").hide();
 	$("#admin").show();
+	getCleanersList();
+	getStockList();
+	getCommandList();
+
 }
 
 function postUserBdd(login, pwd) {
@@ -88,6 +200,8 @@ function postUserGeneric(login, pwd, url) {
 	});
 }
 
+
+
 function postAdminBdd(login, pwd) {
 	console.log("postAdminBdd " + "v1/user/" )
 	$.ajax({
@@ -112,6 +226,35 @@ function postAdminBdd(login, pwd) {
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			console.log('postUser error: ' + textStatus);
+		}
+	});
+}
+
+function postCleanerBdd(login,password, email, nom, prenom, tel) {
+	console.log("postCleanerBdd " + "v1/cleaner/" );
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/cleaner/",
+		dataType : "json",
+		data : JSON.stringify({
+			"id" : 0,
+			"nom" : nom,
+			"prenom" : prenom,
+			"tel" : tel,
+			"dob" : new Date(),
+			"email" : email,
+			"login" : login,
+			"password" : password,
+			"localisation" : "",
+			"note" : 0
+		}),
+		success : function(data, textStatus, jqXHR) {
+			console.log("OK !");
+			afficheUser(data);
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log('postCleaner error: ' + textStatus);
 		}
 	});
 }

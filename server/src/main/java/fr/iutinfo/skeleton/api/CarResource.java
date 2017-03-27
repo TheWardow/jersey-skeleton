@@ -4,16 +4,26 @@ import static fr.iutinfo.skeleton.api.BDDFactory.getDbi;
 import static fr.iutinfo.skeleton.api.BDDFactory.tableExist;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Path("/user")
+import fr.iutinfo.skeleton.common.dto.CarDto;
+
+@Path("/car")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CarResource {
@@ -29,8 +39,7 @@ public class CarResource {
         }
     }
     
-    // Probléme ici
-    /*
+    
     @POST
     public CarDto createCar(CarDto dto) {
         Car Car = new Car();
@@ -52,19 +61,20 @@ public class CarResource {
     
     @GET
     public List<CarDto> getAllCar(@QueryParam("q") String query) {
-        List<Car> Cars;
+        List<Car> Cars = null;
         if (query == null) {
             Cars = dao.all();
         } else {
-            logger.debug("Search users with query: " + query);
-            Cars = dao.search("%" + query + "%");
+            /*logger.debug("Search users with query: " + query);
+            Cars = dao.search("%" + query + "%");*/
         }
-        return Cars.stream().map(User::convertToDto).collect(Collectors.toList());
+        System.out.println("get all car" + Cars);
+        return Cars.stream().map(Car::convertToDto).collect(Collectors.toList());
     }
     
     @DELETE
     @Path("/{id}")
     public void deleteUser(@PathParam("id") int id) {
         dao.delete(id);
-    }*/
+    }
 }

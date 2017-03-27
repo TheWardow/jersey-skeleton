@@ -57,7 +57,6 @@
 					<br />
 					<button id="connexion" class="btn btn-default">Connexion</button>
 					<button id="simul" class="btn btn-default">Simulate</button>
-					<button id="new-user" class="btn btn-default">Create User</button>
 				</div>
 				<div class="col-md-3"></div>
 				<div class="col-md-5">
@@ -213,11 +212,6 @@
 					$("#connexion").click(function() {
 						getForAll()
 					});
-					$("#new-user").click(
-							function() {
-								postUserBdd($("#userlogin").val(), $(
-										"#passwdlogin").val());
-							});
 					$("#new-admin-form-btn").click(
 							function() {
 								postAdminBdd($("#adminlogin").val(), $(

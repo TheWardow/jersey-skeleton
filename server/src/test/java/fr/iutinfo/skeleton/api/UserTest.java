@@ -27,6 +27,13 @@ public class UserTest {
 	}
 	
 	@Test
+    public void should_set_salt_at_build () {
+        User user = new User();
+        assertNotNull(user.getSalt());
+        assertFalse(user.getSalt().isEmpty());
+    }
+	
+	@Test
 	public void isAnonymousTest(){
 		User u1 = new User(-1,"Anonymous");
 		User u2 = new User(1,"Pat");

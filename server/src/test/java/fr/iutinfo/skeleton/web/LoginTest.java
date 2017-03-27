@@ -34,7 +34,6 @@ public class LoginTest extends JerseyTest {
 
     @Before
     public void init() {
-        h = new Helper();
         Helper.initDb();
     }
 

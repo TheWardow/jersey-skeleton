@@ -37,6 +37,14 @@ public class Helper {
     	adressedao.createAdresseTable();
     	productdao.dropProductTable();
     	productdao.createProductTable();
+    	User a = Helper.createAdminWithPassword("admin", "admin");
+        User u = Helper.createUserWithPassword("user", "user");
+        Cleaner c = Helper.createCleanerWithPassword("cleaner", "cleaner", "Tahiti", "Bob");
+        Car car = Helper.createCar(u.getLogin(), "peugeot","206","bleue","","154 AFD 59");
+        Commande com = Helper.createCommande(car.getId(), c.getLogin());
+        Picture pic = Helper.createPicture(c.getId(), "img/photo.jpg", 0);
+        Adresse adresse = Helper.createAdresse("10B", "rue Simone de Beauvoir", "Loos", 59120, u.getLogin());
+        Product product = Helper.createProduct("savon", "Mr Propre", 20, c.getLogin());
     }
 
     static User createUserWithName(String name) {

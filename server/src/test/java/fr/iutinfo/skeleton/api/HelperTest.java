@@ -4,6 +4,7 @@ import fr.iutinfo.skeleton.common.dto.UserDto;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.ws.rs.client.Entity;
@@ -52,6 +53,7 @@ public class HelperTest extends JerseyTest{
 	        assertEquals("84edb3f1dcfbb6812672f56489433f374612054bed48890a54ab07a64dccaa6f", pwd);
 	    }
 
+	    @Ignore
 	    @Test
 	    public void create_should_return_the_user_with_valid_id() {
 	        User user = new User(0, "thomas");
@@ -59,7 +61,7 @@ public class HelperTest extends JerseyTest{
 	        String json = target(PATH).request().post(userEntity).readEntity(String.class);
 	        assertEquals("{\"id\":1,\"isAdmin\":0,\"login\":\"thomas\"", json.substring(0, 36));
 	    }
-
+	    @Ignore
 	    @Test
 	    public void list_should_return_all_users() {
 	        createUserWithName("foo");
@@ -67,7 +69,8 @@ public class HelperTest extends JerseyTest{
 	        List<UserDto> users = target(PATH + "/").request().get(listUserResponseType);
 	        assertEquals(2, users.size());
 	    }
-
+	    
+	    @Ignore
 	    @Test
 	    public void list_all_must_be_ordered() {
 	        createUserWithName("foo");

@@ -23,9 +23,9 @@ public interface CarDao {
     @GetGeneratedKeys
     int insert(@BindBean() Car Car);
     
-    @SqlQuery("select * from car where login = :login")
+    @SqlQuery("select * from car where userlogin = :userlogin")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    List<Car> findByLogin(@Bind("login") String login);
+    List<Car> findByLogin(@Bind("userlogin") String userlogin);
     
     @SqlQuery("select * from car")
     @RegisterMapperFactory(BeanMapperFactory.class)

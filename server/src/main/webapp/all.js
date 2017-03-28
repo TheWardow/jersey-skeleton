@@ -147,6 +147,7 @@ function getCarInfo(id){
 		},
 		success:function (data) {
 			console.log("getCarData " + id + " success");
+			console.log(data);
 			carData = data;
 
 		},

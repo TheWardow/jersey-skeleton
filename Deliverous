@@ -1,6 +1,6 @@
 java:
   image: thewardow/jersey-skeleton
   ports:
-  - ip: 51.255.131.185
+  - ip: 217.182.217.178
     container_port: 8080
     host_port: 80
